@@ -23,6 +23,7 @@ export const BRANCHES = [
 export const NAV_LINKS = [
   { label: 'Home', to: '/', end: true },
   { label: 'About Us', to: '/about' },
+  { label: 'Products', to: '/products' },
 ]
 
 // Shown as the highlighted button in the header and as a link in the footer.

@@ -2,6 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import Layout from './components/Layout'
 import HomePage from './pages/HomePage'
 import AboutUs from './pages/AboutUs'
+import ProductsPage from './pages/ProductsPage'
 import ContactUs from './pages/ContactUs'
 import './App.css'
 
@@ -13,6 +14,7 @@ function App() {
           <Route element={<Layout />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutUs />} />
+            <Route path="/products" element={<ProductsPage />} />
             <Route path="/contact" element={<ContactUs />} />
 
             {/* Old / unknown URLs fall back to the home page */}

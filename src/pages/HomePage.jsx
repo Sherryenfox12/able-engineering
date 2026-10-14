@@ -30,7 +30,7 @@ const SERVICES = [
     points: ['Brother machining centres', 'Inspected & ready for production', 'Sourcing on request'],
     image: IMAGES.factory,
     cta: 'View Available Machines',
-    href: '#new-arrival',
+    to: '/products?category=machine',
   },
   {
     icon: PackageIcon,

@@ -114,6 +114,13 @@ export const WhatsAppIcon = (props) => (
   </Icon>
 )
 
+export const SearchIcon = (props) => (
+  <Icon {...props}>
+    <circle cx="11" cy="11" r="7" />
+    <path d="m21 21-4.3-4.3" />
+  </Icon>
+)
+
 export const MapPinIcon = (props) => (
   <Icon {...props}>
     <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
