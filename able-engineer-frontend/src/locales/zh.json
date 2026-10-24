@@ -1,0 +1,331 @@
+{
+  "lang": {
+    "en": "English",
+    "zh": "中文",
+    "id": "Bahasa Indonesia",
+    "label": "语言",
+    "switch": "切换语言"
+  },
+  "nav": {
+    "home": "首页",
+    "about": "关于我们",
+    "products": "产品",
+    "repair": "维修与服务",
+    "contact": "联系我们",
+    "openMenu": "打开菜单",
+    "closeMenu": "关闭菜单",
+    "main": "主导航"
+  },
+  "company": {
+    "tagline": "专业 CNC 解决方案、维护与工程支持",
+    "regions": "马来西亚、泰国及更广泛地区"
+  },
+  "footer": {
+    "aboutLine": "{tagline}。携手共建更强的明天。",
+    "quickLinks": "快速链接",
+    "whatWeOffer": "我们的服务",
+    "offerings": {
+      "machines": "二手 CNC 机床",
+      "parts": "CNC 备件",
+      "maintenance": "维护与维修",
+      "overhaul": "机床大修"
+    },
+    "whatsapp": "WhatsApp",
+    "phone": "电话",
+    "rights": "版权所有。",
+    "experience": "{years}+ 年行业经验"
+  },
+  "home": {
+    "eyebrow": "专业 CNC 解决方案",
+    "titleBefore": "您值得信赖的 CNC",
+    "titleHighlight": "工程支持",
+    "titleAfter": "合作伙伴",
+    "lead": "二手 CNC 机床、备件、维护与大修。Able Engineering 以务实方案助力生产持续运转，依托 {years} 年行业经验。",
+    "ctaExplore": "了解我们的服务",
+    "ctaAbout": "关于我们",
+    "badgeYears": "年",
+    "badgeIndustry": "行业经验",
+    "whatWeDo": "我们的服务",
+    "servicesTitle": "机床、备件与维护，一站式解决",
+    "servicesLead": "请选择您需要的服务。每项服务都有详细说明，并可直接联系我们。",
+    "services": {
+      "machines": {
+        "title": "二手 CNC 机床",
+        "tag": "正在寻找机床？",
+        "text": "优质二手 CNC 机床，重点供应兄弟（Brother）加工中心。",
+        "points": ["兄弟加工中心", "检测合格、可直接投产", "可按需代寻"],
+        "cta": "查看现有机床"
+      },
+      "parts": {
+        "title": "CNC 备件",
+        "tag": "需要备件？",
+        "text": "正品及兼容 CNC 备件，放心供应。",
+        "points": ["主轴、滚珠丝杠与直线导轨", "伺服电机与驱动器", "换刀机构与控制板"],
+        "cta": "咨询备件"
+      },
+      "repair": {
+        "title": "维护与维修",
+        "tag": "机床停机了？",
+        "text": "现场支持，减少停机时间，提升生产效率。",
+        "points": ["预防性维护", "维修与机床大修", "自动化升级"],
+        "cta": "查看维修与服务"
+      }
+    },
+    "highlights": {
+      "years": "年行业经验",
+      "market": "多市场",
+      "marketLabel": "覆盖区域的服务与支持",
+      "onestop": "一站式",
+      "onestopLabel": "CNC 解决方案尽在掌握"
+    },
+    "aboutEyebrow": "关于 Able Engineering",
+    "aboutTitle": "以经验为基，以技术为驱动力。",
+    "aboutText": "我们是专注于 CNC 机械的专业工程服务公司，帮助客户保障机床可靠性、减少停机时间并提升整体生产效率。",
+    "aboutCta": "了解更多关于我们",
+    "newArrival": "新品到货",
+    "seeMore": "查看更多详情",
+    "arrivals": {
+      "speedio": "高速紧凑型加工中心，兼顾精度与产能。配备 21 刀位刀塔与先进数字控制，这台 Brother SPEEDIO 可胜任高要求生产任务。",
+      "tc31b": "可靠的兄弟立式加工中心，视野清晰、操作面板实用、品质经得起检验——适合需要稳定 CNC 产能的车间。"
+    },
+    "ctaTitle": "需要机床、备件或维护合作伙伴？",
+    "ctaText": "联系我们的团队，让生产持续向前。",
+    "ctaButton": "联系我们",
+    "machineryAlt": "CNC 机床运行中",
+    "brandsLabel": "我们支持的产品品牌",
+    "highlightsLabel": "公司亮点"
+  },
+  "about": {
+    "eyebrow": "02  |  关于我们",
+    "title": "关于 Able Engineering",
+    "lead": "专业 CNC 解决方案、维护与工程支持。",
+    "whoWeAre": "我们是谁",
+    "partnerTitle": "您值得信赖的 CNC",
+    "partnerTitleLine2": "工程支持合作伙伴",
+    "p1": "Able Engineering 是一家专注于 CNC 机械的专业工程服务公司，尤其擅长兄弟（Brother）CNC 加工中心。",
+    "p2": "我们提供全面支持，涵盖 CNC 机床销售、维护维修、备件供应、机床大修、自动化升级与技术支持。",
+    "p3": "凭借丰富的行业经验与技术专长，我们致力于帮助客户保障机床可靠性、减少停机时间并提升整体生产效率。",
+    "focus": ["CNC 机床", "维护", "维修", "备件", "工程支持"],
+    "factoryAlt": "自动化 CNC 制造工厂",
+    "vmEyebrow": "愿景与使命",
+    "vmTitle": "携手共建更强的明天",
+    "vmCaption": "可靠方案，成就更高效的明天",
+    "engineersAlt": "工程师操作 CNC 机床",
+    "vision": "我们的愿景",
+    "visionText": "成为值得信赖的 CNC 工程合作伙伴。",
+    "mission": "我们的使命",
+    "missionText": "助力客户持续向前。",
+    "experience": "我们的经验",
+    "experienceTitle": "以经验为基。",
+    "experienceTitleLine2": "以技术为驱动力。",
+    "experienceP1": "Able Engineering 在 CNC 机床维护与工程应用方面积累了丰富经验，在机床全生命周期为客户提供务实解决方案。",
+    "experienceP2": "我们的技术能力覆盖主要 CNC 机床部件，包括：",
+    "capabilities": ["主轴", "滚珠丝杠", "直线导轨", "伺服电机", "驱动器", "换刀机构", "控制板"],
+    "experienceP3": "凭借技术知识、备件支持与专业检测能力，我们能高效响应机床问题，帮助客户自信地恢复生产。",
+    "techAlt": "技术员检查 CNC 机床部件",
+    "stats": {
+      "years": "年行业经验",
+      "market": "多市场",
+      "marketLabel": "服务与支持",
+      "onestop": "一站式",
+      "onestopLabel": "CNC 解决方案"
+    },
+    "journey": "我们的历程",
+    "regionTitle": "拓展区域支持网络",
+    "regionText": "持续服务 {regions} 的客户。",
+    "backHome": "返回首页"
+  },
+  "products": {
+    "eyebrow": "我们的产品",
+    "title": "CNC 机床与备件",
+    "lead": "二手兄弟 CNC 机床与正品备件，随时满足您的需求。",
+    "sidebarTitle": "产品",
+    "chooseCategory": "选择分类",
+    "allProducts": "全部产品",
+    "allBlurb": "浏览我们的 CNC 机床与备件，或告诉我们您的需求，我们可代为寻找。",
+    "cantFind": "找不到？",
+    "sourceIt": "我们可以帮您代寻",
+    "searchPlaceholder": "搜索产品...",
+    "searchLabel": "搜索产品",
+    "photoSoon": "照片即将上线",
+    "enquire": "立即咨询",
+    "enquireMessage": "您好 Able Engineering，我对「{name}」感兴趣。能否告知价格与现货情况？",
+    "sourceMessage": "您好 Able Engineering，我在寻找 CNC 机床/备件，能否帮忙代寻？",
+    "askMessage": "您好 Able Engineering，我在找 {item}，请问有货吗？",
+    "defaultItem": "CNC 备件",
+    "emptySearchTitle": "没有匹配的产品",
+    "emptySearchText": "请尝试其他关键词，或告诉我们您的需求，我们来帮您找。",
+    "emptyStockTitle": "库存正在更新",
+    "emptyStockText": "该分类正在更新。请联系我们了解现货或代寻服务。",
+    "askWhatsApp": "通过 WhatsApp 询问",
+    "ctaTitle": "需要未列出的产品？",
+    "ctaText": "我们的团队可按需代寻机床与备件。请发送型号，我们会尽快回复。",
+    "ctaButton": "联系我们",
+    "categoriesLabel": "产品分类",
+    "categories": {
+      "machine": { "label": "机床", "blurb": "二手 CNC 机床，以兄弟加工中心为主。" },
+      "ball-screw": { "label": "滚珠丝杠与护罩", "blurb": "兄弟机床用滚珠丝杠轴组与护罩。" },
+      "lm-guide": { "label": "直线导轨", "blurb": "直线运动导轨与滑块。" },
+      "motor": { "label": "电机", "blurb": "伺服电机与主轴电机。" },
+      "amplifier": { "label": "放大器", "blurb": "伺服放大器与驱动器。" },
+      "spare-parts": { "label": "备件", "blurb": "换刀机构、控制板及其他 CNC 备件。" }
+    },
+    "condition": {
+      "Used": "二手",
+      "Parts": "备件"
+    },
+    "items": {
+      "brother-speedio-s1000x1": {
+        "summary": "高速紧凑型加工中心，兼顾精度与产能。",
+        "highlights": ["Brother SPEEDIO 系列", "21 刀位刀塔", "先进数字控制"]
+      },
+      "brother-tc-31b-machine": {
+        "summary": "可靠的立式加工中心，品质经得起检验。",
+        "highlights": ["兄弟立式加工中心", "视野清晰", "实用操作面板"]
+      },
+      "ball-screw-x-tc-31a": {
+        "summary": "兄弟 TC-31A 用 X 轴滚珠丝杠组。",
+        "highlights": ["适用于 Brother TC-31A", "X 轴", "滚珠丝杠与螺母"]
+      },
+      "ball-screw-x-tc-20a": {
+        "summary": "兄弟 TC-20A 用 X 轴滚珠丝杠组。",
+        "highlights": ["适用于 Brother TC-20A", "X 轴", "滚珠丝杠与螺母"]
+      },
+      "ball-screw-x-tc-31b": {
+        "summary": "兄弟 TC-31B 用 X 轴滚珠丝杠组。",
+        "highlights": ["适用于 Brother TC-31B", "X 轴", "滚珠丝杠与螺母"]
+      },
+      "lm-guide-block-set": {
+        "summary": "直线导轨与滑块套件，实现平稳精准的轴运动。",
+        "highlights": ["导轨与滑块套件", "适用于 X / Y / Z 轴", "可按需截取长度"]
+      },
+      "lm-guide-block-only": {
+        "summary": "更换滑块，恢复平稳行程与定位精度。",
+        "highlights": ["更换滑块", "法兰型", "兄弟机床"]
+      },
+      "lm-guide-grease-nipple": {
+        "summary": "润滑单元，保护直线导轨滑块并延长寿命。",
+        "highlights": ["延长导轨寿命", "安装简便", "兼容型号可按需提供"]
+      },
+      "servo-motor-axis": {
+        "summary": "X / Y / Z 轴伺服电机，售前检测。",
+        "highlights": ["X / Y / Z 轴", "检测合格", "兄弟及其他品牌"]
+      },
+      "spindle-motor": {
+        "summary": "加工中心用高速主轴电机。",
+        "highlights": ["高速型", "检测合格", "亦可维修"]
+      },
+      "servo-motor-mitsubishi": {
+        "summary": "三菱电机伺服电机，适用于 CNC 与自动化。",
+        "highlights": ["三菱电机", "检测合格", "型号清单可按需提供"]
+      },
+      "servo-amplifier": {
+        "summary": "驱动并控制轴电机的伺服放大器。",
+        "highlights": ["轴驱动", "检测合格", "亦可维修"]
+      },
+      "spindle-amplifier": {
+        "summary": "稳定调速的主轴驱动单元。",
+        "highlights": ["主轴驱动", "检测合格", "兄弟机床"]
+      },
+      "power-supply-unit": {
+        "summary": "CNC 驱动与控制单元用电源模块。",
+        "highlights": ["驱动电源", "检测合格", "快速更换"]
+      },
+      "tool-changer-arm": {
+        "summary": "自动换刀部件，换刀可靠快捷。",
+        "highlights": ["ATC 部件", "Brother SPEEDIO / TC 系列", "亦可维修"]
+      },
+      "control-board": {
+        "summary": "控制与 I/O 电路板，检测合格可直接安装。",
+        "highlights": ["控制 / I/O 板", "检测合格", "可提供板卡维修"]
+      },
+      "pneumatic-cylinder": {
+        "summary": "门、夹具与换刀用气缸及电磁阀。",
+        "highlights": ["SMC 及兼容品牌", "气缸与阀门", "快速更换"]
+      },
+      "operator-panel": {
+        "summary": "操作面板、显示屏与按键更换件。",
+        "highlights": ["面板与显示", "检测合格", "兄弟机床"]
+      }
+    }
+  },
+  "repair": {
+    "eyebrow": "我们的服务",
+    "title": "维修与服务",
+    "lead": "现场 CNC 维护、维修与大修，减少停机，保障生产持续运转。",
+    "support": "机床支持",
+    "introTitle": "让您的 CNC 持续运转。",
+    "introTitleLine2": "快速减少停机时间。",
+    "introP1": "Able Engineering 为 CNC 机械提供务实的维护与维修支持，尤其擅长兄弟 CNC 加工中心。",
+    "introP2": "从预防性保养到紧急故障与整机大修，我们的团队助力恢复可靠性并提升生产效率——依托 {years}+ 年行业经验。",
+    "coverage": [
+      "主轴",
+      "滚珠丝杠",
+      "直线导轨",
+      "伺服电机与驱动器",
+      "换刀机构",
+      "控制板",
+      "自动化升级",
+      "兄弟 CNC 支持"
+    ],
+    "techAlt": "技术员检修 CNC 设备",
+    "offerEyebrow": "我们提供",
+    "offerTitle": "维护、维修与大修",
+    "offerLead": "一位合作伙伴，覆盖保障车间产能所需的各项服务。",
+    "services": {
+      "preventive": {
+        "title": "预防性维护",
+        "text": "定期保养，及早发现磨损，保持机床精度，避免车间非计划停机。"
+      },
+      "repair": {
+        "title": "维修与故障排查",
+        "text": "现场诊断并维修机械、电气与控制系统问题，让生产安心恢复。"
+      },
+      "overhaul": {
+        "title": "机床大修",
+        "text": "全面或部分翻新——主轴、滚珠丝杠、导轨等——恢复性能并延长机床寿命。"
+      }
+    },
+    "howEyebrow": "服务流程",
+    "howTitle": "从故障到恢复生产的清晰路径",
+    "process": {
+      "01": {
+        "title": "告知问题",
+        "text": "提供机床型号、症状与紧急程度。我们建议最快可行的下一步。"
+      },
+      "02": {
+        "title": "检查与报价",
+        "text": "现场或根据照片与备件履历评估，确认范围、备件与工期。"
+      },
+      "03": {
+        "title": "维修与验证",
+        "text": "完成作业并检测，确保机床可重新投入生产。"
+      }
+    },
+    "whyTitle": "车间为何选择 Able Engineering",
+    "why": [
+      "务实、面向车间的支持",
+      "维修同时可供应备件",
+      "覆盖主要 CNC 部件的经验",
+      "覆盖 {regions} 的区域服务"
+    ],
+    "ctaTitle": "机床停机或到了保养期？",
+    "ctaText": "告诉我们型号与问题——我们助您尽快恢复生产。",
+    "ctaButton": "申请服务支持"
+  },
+  "contact": {
+    "eyebrow": "联系我们",
+    "title": "联系我们",
+    "lead": "需要 CNC 机床、备件或维护支持？欢迎与我们的团队沟通。",
+    "location": "我们的位置",
+    "email": "邮箱",
+    "whatsapp": "WhatsApp",
+    "phone": "电话",
+    "warehouse": "仓库",
+    "chatWhatsApp": "通过 WhatsApp 聊天",
+    "mapTitle": "{name} 位置地图",
+    "branches": {
+      "Penang Branch": "槟城分公司"
+    }
+  }
+}
