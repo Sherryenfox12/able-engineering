@@ -1,0 +1,331 @@
+{
+  "lang": {
+    "en": "English",
+    "zh": "中文",
+    "id": "Bahasa Indonesia",
+    "label": "Language",
+    "switch": "Change language"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "products": "Products",
+    "repair": "Repair and Service",
+    "contact": "Contact Us",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "main": "Main"
+  },
+  "company": {
+    "tagline": "Professional CNC Solutions, Maintenance & Engineering Support",
+    "regions": "Malaysia, Thailand and beyond"
+  },
+  "footer": {
+    "aboutLine": "{tagline}. Building a stronger tomorrow together.",
+    "quickLinks": "Quick Links",
+    "whatWeOffer": "What We Offer",
+    "offerings": {
+      "machines": "Used CNC Machines",
+      "parts": "CNC Spare Parts",
+      "maintenance": "Maintenance & Repair",
+      "overhaul": "Machine Overhaul"
+    },
+    "whatsapp": "WhatsApp",
+    "phone": "Phone",
+    "rights": "All rights reserved.",
+    "experience": "{years}+ years of industry experience"
+  },
+  "home": {
+    "eyebrow": "Professional CNC Solutions",
+    "titleBefore": "Your CNC Partner for",
+    "titleHighlight": "Reliable Engineering",
+    "titleAfter": "Support",
+    "lead": "Used CNC machines, spare parts, maintenance and overhaul. Able Engineering keeps your production moving with practical solutions backed by {years} years of experience.",
+    "ctaExplore": "Explore What We Do",
+    "ctaAbout": "About Us",
+    "badgeYears": "Years of",
+    "badgeIndustry": "Industry Experience",
+    "whatWeDo": "What We Do",
+    "servicesTitle": "Machines, Parts & Maintenance in One Place",
+    "servicesLead": "Choose what you need below. Each service has its own details and a direct way to get in touch.",
+    "services": {
+      "machines": {
+        "title": "Used CNC Machines",
+        "tag": "Looking for a machine?",
+        "text": "Quality pre-owned CNC machines, with a strong focus on Brother CNC machining centres.",
+        "points": ["Brother machining centres", "Inspected & ready for production", "Sourcing on request"],
+        "cta": "View Available Machines"
+      },
+      "parts": {
+        "title": "CNC Spare Parts",
+        "tag": "Need a part?",
+        "text": "Genuine and compatible CNC parts supplied with confidence.",
+        "points": ["Spindles, ball screws & linear guides", "Servo motors & drives", "Tool changers & control boards"],
+        "cta": "Enquire About Parts"
+      },
+      "repair": {
+        "title": "Maintenance & Repair",
+        "tag": "Machine down?",
+        "text": "On-site support to reduce downtime and improve efficiency.",
+        "points": ["Preventive maintenance", "Repair & machine overhaul", "Automation upgrades"],
+        "cta": "View Repair & Service"
+      }
+    },
+    "highlights": {
+      "years": "Years of industry experience",
+      "market": "Multi-Market",
+      "marketLabel": "Service & support across the region",
+      "onestop": "One-Stop",
+      "onestopLabel": "CNC solutions under one roof"
+    },
+    "aboutEyebrow": "About Able Engineering",
+    "aboutTitle": "Built on Experience. Driven by Technical Expertise.",
+    "aboutText": "We are a professional engineering service company specializing in CNC machinery, helping customers maintain machine reliability, reduce downtime and improve overall production efficiency.",
+    "aboutCta": "Learn More About Us",
+    "newArrival": "New Arrival",
+    "seeMore": "See More Details",
+    "arrivals": {
+      "speedio": "A high-speed compact machining centre built for precision and productivity. Featuring a 21-tool turret and advanced digital control, this Brother SPEEDIO is ready to support demanding production work.",
+      "tc31b": "A reliable Brother vertical machining centre with a clear work view, practical control panel and proven build quality — a solid choice for shops looking for dependable CNC capacity."
+    },
+    "ctaTitle": "Need a machine, a part or a maintenance partner?",
+    "ctaText": "Talk to our team and keep your production moving forward.",
+    "ctaButton": "Contact Us",
+    "machineryAlt": "CNC machinery at work",
+    "brandsLabel": "Product brands we support",
+    "highlightsLabel": "Company highlights"
+  },
+  "about": {
+    "eyebrow": "02  |  About Us",
+    "title": "About Able Engineering",
+    "lead": "Professional CNC solutions, maintenance & engineering support.",
+    "whoWeAre": "Who We Are",
+    "partnerTitle": "Your CNC Partner for",
+    "partnerTitleLine2": "Reliable Engineering Support",
+    "p1": "Able Engineering is a professional engineering service company specializing in CNC machinery, with a strong focus on Brother CNC machining centres.",
+    "p2": "We provide comprehensive support covering CNC machine sales, maintenance and repair, spare parts supply, machine overhaul, automation upgrades and technical support.",
+    "p3": "Backed by extensive industry experience and technical expertise, we are committed to helping our customers maintain machine reliability, reduce downtime and improve overall production efficiency.",
+    "focus": ["CNC Machines", "Maintenance", "Repair", "Spare Parts", "Engineering Support"],
+    "factoryAlt": "Automated CNC manufacturing facility",
+    "vmEyebrow": "Vision & Mission",
+    "vmTitle": "Building a Stronger Tomorrow Together",
+    "vmCaption": "Reliable solutions for a more productive tomorrow",
+    "engineersAlt": "Engineers working with CNC machinery",
+    "vision": "Our Vision",
+    "visionText": "To be a trusted CNC engineering partner.",
+    "mission": "Our Mission",
+    "missionText": "To keep our customers moving forward.",
+    "experience": "Our Experience",
+    "experienceTitle": "Built on Experience.",
+    "experienceTitleLine2": "Driven by Technical Expertise.",
+    "experienceP1": "Able Engineering has developed extensive experience in CNC machine maintenance and engineering applications, supporting customers with practical solutions throughout the machine lifecycle.",
+    "experienceP2": "Our technical capabilities cover major CNC machine components including:",
+    "capabilities": ["Spindles", "Ball screws", "Linear guides", "Servo motors", "Drives", "Tool changers", "Control boards"],
+    "experienceP3": "With technical knowledge, spare parts support and dedicated testing capabilities, we respond efficiently to machine issues and help customers restore operations with confidence.",
+    "techAlt": "Technician inspecting a CNC machine component",
+    "stats": {
+      "years": "Years of Industry Experience",
+      "market": "Multi-Market",
+      "marketLabel": "Service & Support",
+      "onestop": "One-Stop",
+      "onestopLabel": "CNC Solutions"
+    },
+    "journey": "Our Journey",
+    "regionTitle": "Expanding Our Regional Support",
+    "regionText": "Continuing to support customers across {regions}.",
+    "backHome": "Back to Home"
+  },
+  "products": {
+    "eyebrow": "Our Products",
+    "title": "CNC Machines & Parts",
+    "lead": "Used Brother CNC machines and genuine spare parts, ready when you need them.",
+    "sidebarTitle": "Products",
+    "chooseCategory": "Choose a category",
+    "allProducts": "All Products",
+    "allBlurb": "Browse our CNC machines and parts, or ask us to source what you need.",
+    "cantFind": "Can't find it?",
+    "sourceIt": "We can source it for you",
+    "searchPlaceholder": "Search products...",
+    "searchLabel": "Search products",
+    "photoSoon": "Photo coming soon",
+    "enquire": "Enquire Now",
+    "enquireMessage": "Hi Able Engineering, I'm interested in \"{name}\". Could you share the price and availability?",
+    "sourceMessage": "Hi Able Engineering, I'm looking for a CNC machine / part. Can you help me source it?",
+    "askMessage": "Hi Able Engineering, I'm looking for {item}. Do you have it available?",
+    "defaultItem": "a CNC part",
+    "emptySearchTitle": "No products match your search",
+    "emptySearchText": "Try a different keyword, or tell us what you need and we will find it.",
+    "emptyStockTitle": "New stock being updated",
+    "emptyStockText": "This category is being updated. Contact us for current availability or sourcing.",
+    "askWhatsApp": "Ask on WhatsApp",
+    "ctaTitle": "Need something that is not listed?",
+    "ctaText": "Our team can source machines and parts on request. Send us the model and we will get back to you.",
+    "ctaButton": "Contact Us",
+    "categoriesLabel": "Product categories",
+    "categories": {
+      "machine": { "label": "Machine", "blurb": "Used CNC machines, mainly Brother machining centres." },
+      "ball-screw": { "label": "Ball Screw & Cover", "blurb": "Ball screw axis sets and covers for Brother machines." },
+      "lm-guide": { "label": "LM Guide", "blurb": "Linear motion guides and blocks." },
+      "motor": { "label": "Motor", "blurb": "Servo and spindle motors." },
+      "amplifier": { "label": "Amplifier", "blurb": "Servo amplifiers and drives." },
+      "spare-parts": { "label": "Spare Parts", "blurb": "Tool changers, control boards and other CNC parts." }
+    },
+    "condition": {
+      "Used": "Used",
+      "Parts": "Parts"
+    },
+    "items": {
+      "brother-speedio-s1000x1": {
+        "summary": "High-speed compact machining centre built for precision and productivity.",
+        "highlights": ["Brother SPEEDIO series", "21-tool turret", "Advanced digital control"]
+      },
+      "brother-tc-31b-machine": {
+        "summary": "Reliable vertical machining centre with proven build quality.",
+        "highlights": ["Brother vertical machining centre", "Clear work view", "Practical control panel"]
+      },
+      "ball-screw-x-tc-31a": {
+        "summary": "X-axis ball screw set for Brother TC-31A.",
+        "highlights": ["Fits Brother TC-31A", "X axis", "Ball screw & nut"]
+      },
+      "ball-screw-x-tc-20a": {
+        "summary": "X-axis ball screw set for Brother TC-20A.",
+        "highlights": ["Fits Brother TC-20A", "X axis", "Ball screw & nut"]
+      },
+      "ball-screw-x-tc-31b": {
+        "summary": "X-axis ball screw set for Brother TC-31B.",
+        "highlights": ["Fits Brother TC-31B", "X axis", "Ball screw & nut"]
+      },
+      "lm-guide-block-set": {
+        "summary": "Linear motion guide rail with sliding blocks for smooth, precise axis movement.",
+        "highlights": ["Rail & block set", "For X / Y / Z axis", "Cut to length on request"]
+      },
+      "lm-guide-block-only": {
+        "summary": "Replacement slide block to restore smooth travel and positioning accuracy.",
+        "highlights": ["Replacement block", "Flanged type", "Brother machines"]
+      },
+      "lm-guide-grease-nipple": {
+        "summary": "Lubrication unit that keeps LM guide blocks protected and running longer.",
+        "highlights": ["Extends guide life", "Easy to fit", "Compatible units on request"]
+      },
+      "servo-motor-axis": {
+        "summary": "Axis servo motor for X / Y / Z drive, tested before sale.",
+        "highlights": ["X / Y / Z axis", "Tested working", "Brother & other brands"]
+      },
+      "spindle-motor": {
+        "summary": "High-speed spindle motor for machining centres.",
+        "highlights": ["High-speed type", "Tested working", "Repair also available"]
+      },
+      "servo-motor-mitsubishi": {
+        "summary": "Mitsubishi Electric servo motor for CNC and automation use.",
+        "highlights": ["Mitsubishi Electric", "Tested working", "Model list on request"]
+      },
+      "servo-amplifier": {
+        "summary": "Servo amplifier that drives and controls axis motors.",
+        "highlights": ["Axis drive", "Tested working", "Repair also available"]
+      },
+      "spindle-amplifier": {
+        "summary": "Spindle drive unit for stable speed control.",
+        "highlights": ["Spindle drive", "Tested working", "Brother machines"]
+      },
+      "power-supply-unit": {
+        "summary": "Power supply module for CNC drive and control units.",
+        "highlights": ["Drive power supply", "Tested working", "Fast replacement"]
+      },
+      "tool-changer-arm": {
+        "summary": "Automatic tool changer parts for reliable, fast tool changes.",
+        "highlights": ["ATC parts", "Brother SPEEDIO / TC series", "Repair also available"]
+      },
+      "control-board": {
+        "summary": "Control and I/O circuit boards, tested and ready to install.",
+        "highlights": ["Control / I/O boards", "Tested working", "Board repair available"]
+      },
+      "pneumatic-cylinder": {
+        "summary": "Air cylinders and solenoid valves for door, clamp and tool-change functions.",
+        "highlights": ["SMC & compatible", "Cylinders & valves", "Quick replacement"]
+      },
+      "operator-panel": {
+        "summary": "Control panel, display and keypad replacements for your machine.",
+        "highlights": ["Panel & display", "Tested working", "Brother machines"]
+      }
+    }
+  },
+  "repair": {
+    "eyebrow": "Our Services",
+    "title": "Repair and Service",
+    "lead": "On-site CNC maintenance, repair and overhaul to reduce downtime and keep production moving.",
+    "support": "Machine Support",
+    "introTitle": "Keep Your CNC Running.",
+    "introTitleLine2": "Cut Downtime Fast.",
+    "introP1": "Able Engineering provides practical maintenance and repair support for CNC machinery, with a strong focus on Brother CNC machining centres.",
+    "introP2": "From preventive servicing to urgent breakdowns and full machine overhauls, our team helps you restore reliability and improve production efficiency — backed by {years}+ years of industry experience.",
+    "coverage": [
+      "Spindles",
+      "Ball screws",
+      "Linear guides",
+      "Servo motors & drives",
+      "Tool changers",
+      "Control boards",
+      "Automation upgrades",
+      "Brother CNC support"
+    ],
+    "techAlt": "Technician working on CNC equipment",
+    "offerEyebrow": "What We Offer",
+    "offerTitle": "Maintenance, Repair & Overhaul",
+    "offerLead": "One partner for the service work that keeps your shop productive.",
+    "services": {
+      "preventive": {
+        "title": "Preventive Maintenance",
+        "text": "Scheduled servicing to catch wear early, keep machines accurate and avoid unplanned stoppages on the shop floor."
+      },
+      "repair": {
+        "title": "Repair & Troubleshooting",
+        "text": "On-site diagnosis and repair for mechanical, electrical and control issues so production can resume with confidence."
+      },
+      "overhaul": {
+        "title": "Machine Overhaul",
+        "text": "Full or partial rebuilds — spindles, ball screws, guides and more — to restore performance and extend machine life."
+      }
+    },
+    "howEyebrow": "How It Works",
+    "howTitle": "Simple Path from Issue to Uptime",
+    "process": {
+      "01": {
+        "title": "Tell us the issue",
+        "text": "Share the machine model, symptoms and urgency. We advise on the fastest practical next step."
+      },
+      "02": {
+        "title": "Inspect & quote",
+        "text": "We assess on-site or from photos and parts history, then confirm scope, parts and timeline."
+      },
+      "03": {
+        "title": "Repair & verify",
+        "text": "Work is completed with testing so your machine is ready to return to production."
+      }
+    },
+    "whyTitle": "Why shops call Able Engineering",
+    "why": [
+      "Practical, shop-floor focused support",
+      "Spare parts supply alongside repair work",
+      "Experience across major CNC components",
+      "Regional service across {regions}"
+    ],
+    "ctaTitle": "Machine down or due for service?",
+    "ctaText": "Tell us the model and the issue — we will help you get back into production.",
+    "ctaButton": "Request Service Support"
+  },
+  "contact": {
+    "eyebrow": "Get In Touch",
+    "title": "Contact Us",
+    "lead": "Looking for a CNC machine, spare parts or maintenance support? Talk to our team.",
+    "location": "Our Location",
+    "email": "Email",
+    "whatsapp": "WhatsApp",
+    "phone": "Phone",
+    "warehouse": "Warehouse",
+    "chatWhatsApp": "Chat on WhatsApp",
+    "mapTitle": "{name} location map",
+    "branches": {
+      "Penang Branch": "Penang Branch"
+    }
+  }
+}

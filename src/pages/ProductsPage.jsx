@@ -13,6 +13,7 @@ import {
 import { BRANCHES } from '../constants/company'
 import { IMAGES } from '../constants/images'
 import { PRODUCT_CATEGORIES, PRODUCTS } from '../constants/products'
+import { useLanguage } from '../locales/i18n'
 import './ProductsPage.css'
 
 const ALL = 'all'
@@ -20,28 +21,33 @@ const WHATSAPP_NUMBER = BRANCHES[0].whatsapp.display.replace(/\D/g, '')
 
 const whatsappLink = (text) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`
 
-const categoryLabel = (id) => PRODUCT_CATEGORIES.find((c) => c.id === id)?.label ?? ''
-
-function ProductPlaceholder({ category }) {
+function ProductPlaceholder({ category, label }) {
   const PlaceholderIcon = category === 'machine' ? FactoryIcon : category === 'spare-parts' ? PackageIcon : GearIcon
   return (
     <div className="product-card__placeholder" aria-hidden="true">
       <PlaceholderIcon size={64} strokeWidth={1.1} />
-      <span>Photo coming soon</span>
+      <span>{label}</span>
     </div>
   )
 }
 
 function ProductCard({ product, index }) {
-  const { name, category, image, condition, summary, highlights } = product
-  const message = `Hi Able Engineering, I'm interested in "${name}". Could you share the price and availability?`
+  const { t } = useLanguage()
+  const { name, category, image, condition, id, summary, highlights } = product
+  const categoryLabel = t(`products.categories.${category}.label`)
+  const conditionLabel = condition ? t(`products.condition.${condition}`) : ''
+  const message = t('products.enquireMessage', { name })
 
   return (
     <Reveal delay={(index % 3) * 100} as="article" className="product-card">
       <div className="product-card__media">
-        {image ? <img src={image} alt={name} loading="lazy" /> : <ProductPlaceholder category={category} />}
-        <span className="product-card__category">{categoryLabel(category)}</span>
-        {condition && <span className="product-card__condition">{condition}</span>}
+        {image ? (
+          <img src={image} alt={name} loading="lazy" />
+        ) : (
+          <ProductPlaceholder category={category} label={t('products.photoSoon')} />
+        )}
+        <span className="product-card__category">{categoryLabel}</span>
+        {condition && <span className="product-card__condition">{conditionLabel}</span>}
       </div>
 
       <div className="product-card__body">
@@ -49,10 +55,10 @@ function ProductCard({ product, index }) {
         <p className="product-card__summary">{summary}</p>
 
         <ul className="product-card__highlights">
-          {highlights.map((item) => (
-            <li key={item}>
+          {highlights.map((itemText) => (
+            <li key={itemText}>
               <CheckIcon size={15} />
-              {item}
+              {itemText}
             </li>
           ))}
         </ul>
@@ -63,7 +69,7 @@ function ProductCard({ product, index }) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <WhatsAppIcon size={18} /> Enquire Now
+          <WhatsAppIcon size={18} /> {t('products.enquire')}
         </a>
       </div>
     </Reveal>
@@ -71,6 +77,7 @@ function ProductCard({ product, index }) {
 }
 
 function ProductsPage() {
+  const { t } = useLanguage()
   const [searchParams, setSearchParams] = useSearchParams()
   const [query, setQuery] = useState('')
 
@@ -90,20 +97,40 @@ function ProductsPage() {
     return result
   }, [])
 
+  const localizedProducts = useMemo(
+    () =>
+      PRODUCTS.map((product) => {
+        const item = t(`products.items.${product.id}`)
+        const translated = item && typeof item === 'object' ? item : null
+        return {
+          ...product,
+          summary: translated?.summary ?? product.summary,
+          highlights: Array.isArray(translated?.highlights) ? translated.highlights : product.highlights,
+          categoryLabel: t(`products.categories.${product.category}.label`),
+        }
+      }),
+    [t],
+  )
+
   const visibleProducts = useMemo(() => {
     const term = query.trim().toLowerCase()
-    return PRODUCTS.filter((p) => {
+    return localizedProducts.filter((p) => {
       if (active !== ALL && p.category !== active) return false
       if (!term) return true
-      return [p.name, p.summary, categoryLabel(p.category), ...p.highlights].join(' ').toLowerCase().includes(term)
+      return [p.name, p.summary, p.categoryLabel, ...p.highlights].join(' ').toLowerCase().includes(term)
     })
-  }, [active, query])
+  }, [active, query, localizedProducts])
 
-  const activeCategory = PRODUCT_CATEGORIES.find((c) => c.id === active)
-  const heading = activeCategory ? activeCategory.label : 'All Products'
-  const blurb = activeCategory ? activeCategory.blurb : 'Browse our CNC machines and parts, or ask us to source what you need.'
+  const heading = active === ALL ? t('products.allProducts') : t(`products.categories.${active}.label`)
+  const blurb = active === ALL ? t('products.allBlurb') : t(`products.categories.${active}.blurb`)
 
-  const categoryItems = [{ id: ALL, label: 'All Products' }, ...PRODUCT_CATEGORIES]
+  const categoryItems = [
+    { id: ALL, label: t('products.allProducts') },
+    ...PRODUCT_CATEGORIES.map((c) => ({
+      id: c.id,
+      label: t(`products.categories.${c.id}.label`),
+    })),
+  ]
 
   return (
     <>
@@ -111,20 +138,25 @@ function ProductsPage() {
       <section className="page-banner">
         <div className="page-banner__bg" style={{ backgroundImage: `url(${IMAGES.machinery})` }} />
         <div className="container page-banner__inner">
-          <span className="page-banner__eyebrow">Our Products</span>
-          <h1>CNC Machines &amp; Parts</h1>
-          <p>Used Brother CNC machines and genuine spare parts, ready when you need them.</p>
+          <span className="page-banner__eyebrow">{t('products.eyebrow')}</span>
+          <h1>{t('products.title')}</h1>
+          <p>{t('products.lead')}</p>
         </div>
+        <svg className="page-banner__wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+          <polygon points="0,120 1440,0 1440,120" fill="#0b3f91" />
+          <polygon points="0,120 1440,34 1440,120" fill="#1a6adf" />
+          <polygon points="0,120 1440,70 1440,120" fill="#e8f2fc" />
+        </svg>
       </section>
 
       {/* ---------------- Catalogue ---------------- */}
-      <section className="section products">
+      <section className="section section--ice products">
         <div className="container products__layout">
           {/* Sidebar (becomes a scrollable chip row on mobile) */}
-          <aside className="products__sidebar" aria-label="Product categories">
+          <aside className="products__sidebar" aria-label={t('products.categoriesLabel')}>
             <div className="products__sidebar-head">
-              <h2>Products</h2>
-              <span>Choose a category</span>
+              <h2>{t('products.sidebarTitle')}</h2>
+              <span>{t('products.chooseCategory')}</span>
             </div>
             <ul>
               {categoryItems.map(({ id, label }) => (
@@ -144,14 +176,14 @@ function ProductsPage() {
 
             <a
               className="products__sidebar-help"
-              href={whatsappLink("Hi Able Engineering, I'm looking for a CNC machine / part. Can you help me source it?")}
+              href={whatsappLink(t('products.sourceMessage'))}
               target="_blank"
               rel="noopener noreferrer"
             >
               <WhatsAppIcon size={22} />
               <span>
-                <strong>Can&apos;t find it?</strong>
-                We can source it for you
+                <strong>{t('products.cantFind')}</strong>
+                {t('products.sourceIt')}
               </span>
             </a>
           </aside>
@@ -167,10 +199,10 @@ function ProductsPage() {
                 <SearchIcon size={18} />
                 <input
                   type="search"
-                  placeholder="Search products..."
+                  placeholder={t('products.searchPlaceholder')}
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  aria-label="Search products"
+                  aria-label={t('products.searchLabel')}
                 />
               </label>
             </div>
@@ -186,21 +218,19 @@ function ProductsPage() {
                 <span className="products__empty-icon">
                   <PackageIcon size={34} />
                 </span>
-                <h3>{query ? 'No products match your search' : 'New stock being updated'}</h3>
-                <p>
-                  {query
-                    ? 'Try a different keyword, or tell us what you need and we will find it.'
-                    : 'This category is being updated. Contact us for current availability or sourcing.'}
-                </p>
+                <h3>{query ? t('products.emptySearchTitle') : t('products.emptyStockTitle')}</h3>
+                <p>{query ? t('products.emptySearchText') : t('products.emptyStockText')}</p>
                 <a
                   className="btn btn--primary btn--sm"
                   href={whatsappLink(
-                    `Hi Able Engineering, I'm looking for ${query || activeCategory?.label || 'a CNC part'}. Do you have it available?`,
+                    t('products.askMessage', {
+                      item: query || (active === ALL ? t('products.defaultItem') : t(`products.categories.${active}.label`)),
+                    }),
                   )}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <WhatsAppIcon size={18} /> Ask on WhatsApp
+                  <WhatsAppIcon size={18} /> {t('products.askWhatsApp')}
                 </a>
               </div>
             )}
@@ -212,11 +242,11 @@ function ProductsPage() {
       <section className="cta">
         <Reveal className="container cta__inner">
           <div>
-            <h2>Need something that is not listed?</h2>
-            <p>Our team can source machines and parts on request. Send us the model and we will get back to you.</p>
+            <h2>{t('products.ctaTitle')}</h2>
+            <p>{t('products.ctaText')}</p>
           </div>
           <Link to="/contact" className="btn btn--primary">
-            Contact Us <ArrowRightIcon size={18} />
+            {t('products.ctaButton')} <ArrowRightIcon size={18} />
           </Link>
         </Reveal>
       </section>

@@ -3,80 +3,76 @@ import Reveal from '../components/Reveal'
 import { ArrowRightIcon, FlagIcon, GearIcon, GlobeIcon, CheckIcon, TargetIcon } from '../components/Icons'
 import { COMPANY } from '../constants/company'
 import { IMAGES } from '../constants/images'
+import { useLanguage } from '../locales/i18n'
 import './AboutUs.css'
 
-const FOCUS_AREAS = ['CNC Machines', 'Maintenance', 'Repair', 'Spare Parts', 'Engineering Support']
-
-const CAPABILITIES = ['Spindles', 'Ball screws', 'Linear guides', 'Servo motors', 'Drives', 'Tool changers', 'Control boards']
-
-const EXPERIENCE_STATS = [
-  { icon: GearIcon, value: `${COMPANY.yearsExperience}+`, label: 'Years of Industry Experience' },
-  { icon: GlobeIcon, value: 'Multi-Market', label: 'Service & Support' },
-  { icon: CheckIcon, value: 'One-Stop', label: 'CNC Solutions' },
-]
-
 function AboutUs() {
+  const { t } = useLanguage()
+  const focusAreas = t('about.focus')
+  const capabilities = t('about.capabilities')
+
+  const experienceStats = [
+    { icon: GearIcon, value: `${COMPANY.yearsExperience}+`, label: t('about.stats.years') },
+    { icon: GlobeIcon, value: t('about.stats.market'), label: t('about.stats.marketLabel') },
+    { icon: CheckIcon, value: t('about.stats.onestop'), label: t('about.stats.onestopLabel') },
+  ]
+
   return (
     <>
       {/* ---------------- Page banner ---------------- */}
       <section className="page-banner">
         <div className="page-banner__bg" style={{ backgroundImage: `url(${IMAGES.industrial})` }} />
         <div className="container page-banner__inner">
-          <span className="page-banner__eyebrow">02 &nbsp;|&nbsp; About Us</span>
-          <h1>About Able Engineering</h1>
-          <p>Professional CNC solutions, maintenance &amp; engineering support.</p>
+          <span className="page-banner__eyebrow">{t('about.eyebrow')}</span>
+          <h1>{t('about.title')}</h1>
+          <p>{t('about.lead')}</p>
         </div>
+        <svg className="page-banner__wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+          <polygon points="0,120 1440,0 1440,120" fill="#0b3f91" />
+          <polygon points="0,120 1440,34 1440,120" fill="#1a6adf" />
+          <polygon points="0,120 1440,70 1440,120" fill="#e8f2fc" />
+        </svg>
       </section>
 
       {/* ---------------- About ---------------- */}
-      <section className="section">
+      <section className="section section--ice">
         <div className="container split">
           <Reveal className="split__content">
-            <span className="eyebrow">Who We Are</span>
+            <span className="eyebrow">{t('about.whoWeAre')}</span>
             <h2 className="section-title">
-              Your CNC Partner for
+              {t('about.partnerTitle')}
               <br />
-              Reliable Engineering Support
+              {t('about.partnerTitleLine2')}
             </h2>
-            <p>
-              Able Engineering is a professional engineering service company specializing in CNC
-              machinery, with a strong focus on Brother CNC machining centres.
-            </p>
-            <p>
-              We provide comprehensive support covering CNC machine sales, maintenance and repair,
-              spare parts supply, machine overhaul, automation upgrades and technical support.
-            </p>
-            <p>
-              Backed by extensive industry experience and technical expertise, we are committed to
-              helping our customers maintain machine reliability, reduce downtime and improve overall
-              production efficiency.
-            </p>
+            <p>{t('about.p1')}</p>
+            <p>{t('about.p2')}</p>
+            <p>{t('about.p3')}</p>
             <ul className="chips">
-              {FOCUS_AREAS.map((item) => (
+              {(Array.isArray(focusAreas) ? focusAreas : []).map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
           </Reveal>
 
           <Reveal delay={120} className="split__image">
-            <img src={IMAGES.factory} alt="Automated CNC manufacturing facility" loading="lazy" />
+            <img src={IMAGES.factory} alt={t('about.factoryAlt')} loading="lazy" />
           </Reveal>
         </div>
       </section>
 
       {/* ---------------- Vision & Mission ---------------- */}
-      <section className="section section--tint">
+      <section className="section section--panel">
         <div className="container">
           <Reveal className="section-head">
-            <span className="eyebrow">Vision &amp; Mission</span>
-            <h2 className="section-title">Building a Stronger Tomorrow Together</h2>
+            <span className="eyebrow">{t('about.vmEyebrow')}</span>
+            <h2 className="section-title">{t('about.vmTitle')}</h2>
           </Reveal>
 
           <div className="vm">
             <Reveal className="vm__image">
-              <img src={IMAGES.machinery} alt="Engineers working with CNC machinery" loading="lazy" />
+              <img src={IMAGES.machinery} alt={t('about.engineersAlt')} loading="lazy" />
               <div className="vm__caption">
-                <span>Reliable solutions for a more productive tomorrow</span>
+                <span>{t('about.vmCaption')}</span>
               </div>
             </Reveal>
 
@@ -85,15 +81,15 @@ function AboutUs() {
                 <span className="vm-card__icon">
                   <FlagIcon size={30} />
                 </span>
-                <h3>Our Vision</h3>
-                <p>To be a trusted CNC engineering partner.</p>
+                <h3>{t('about.vision')}</h3>
+                <p>{t('about.visionText')}</p>
               </Reveal>
               <Reveal delay={220} className="vm-card">
                 <span className="vm-card__icon">
                   <TargetIcon size={30} />
                 </span>
-                <h3>Our Mission</h3>
-                <p>To keep our customers moving forward.</p>
+                <h3>{t('about.mission')}</h3>
+                <p>{t('about.missionText')}</p>
               </Reveal>
             </div>
           </div>
@@ -101,42 +97,32 @@ function AboutUs() {
       </section>
 
       {/* ---------------- Experience ---------------- */}
-      <section className="section">
+      <section className="section section--ice">
         <div className="container split split--reverse">
           <Reveal className="split__image">
-            <img src={IMAGES.technician} alt="Technician inspecting a CNC machine component" loading="lazy" />
+            <img src={IMAGES.technician} alt={t('about.techAlt')} loading="lazy" />
           </Reveal>
 
           <Reveal delay={120} className="split__content">
-            <span className="eyebrow">Our Experience</span>
+            <span className="eyebrow">{t('about.experience')}</span>
             <h2 className="section-title">
-              Built on Experience.
+              {t('about.experienceTitle')}
               <br />
-              Driven by Technical Expertise.
+              {t('about.experienceTitleLine2')}
             </h2>
-            <p>
-              Able Engineering has developed extensive experience in CNC machine maintenance and
-              engineering applications, supporting customers with practical solutions throughout the
-              machine lifecycle.
-            </p>
-            <p>
-              Our technical capabilities cover major CNC machine components including:
-            </p>
+            <p>{t('about.experienceP1')}</p>
+            <p>{t('about.experienceP2')}</p>
             <ul className="chips">
-              {CAPABILITIES.map((item) => (
+              {(Array.isArray(capabilities) ? capabilities : []).map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
-            <p>
-              With technical knowledge, spare parts support and dedicated testing capabilities, we
-              respond efficiently to machine issues and help customers restore operations with
-              confidence.
-            </p>
+            <p>{t('about.experienceP3')}</p>
           </Reveal>
         </div>
 
         <div className="container stats">
-          {EXPERIENCE_STATS.map(({ icon: StatIcon, value, label }, i) => (
+          {experienceStats.map(({ icon: StatIcon, value, label }, i) => (
             <Reveal key={label} delay={i * 120} className="stat">
               <span className="stat__icon">
                 <StatIcon size={28} />
@@ -154,12 +140,12 @@ function AboutUs() {
       <section className="region">
         <Reveal className="container region__inner">
           <div>
-            <span className="eyebrow">Our Journey</span>
-            <h2>Expanding Our Regional Support</h2>
-            <p>Continuing to support customers across {COMPANY.regions}.</p>
+            <span className="eyebrow">{t('about.journey')}</span>
+            <h2>{t('about.regionTitle')}</h2>
+            <p>{t('about.regionText', { regions: t('company.regions') })}</p>
           </div>
           <Link to="/" className="btn btn--primary">
-            Back to Home <ArrowRightIcon size={18} />
+            {t('about.backHome')} <ArrowRightIcon size={18} />
           </Link>
         </Reveal>
       </section>

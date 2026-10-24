@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { COMPANY, CONTACT_LINK, NAV_LINKS } from '../constants/company'
+import { LanguageSwitcher, useLanguage } from '../locales/i18n'
 import { CloseIcon, GearIcon, MenuIcon } from './Icons'
 import './Header.css'
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const { t } = useLanguage()
   const closeMenu = () => setMenuOpen(false)
 
   return (
@@ -21,20 +23,9 @@ function Header() {
           </span>
         </Link>
 
-        <button
-          type="button"
-          className="nav-toggle"
-          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-          aria-expanded={menuOpen}
-          aria-controls="main-nav"
-          onClick={() => setMenuOpen((open) => !open)}
-        >
-          {menuOpen ? <CloseIcon /> : <MenuIcon />}
-        </button>
-
-        <nav id="main-nav" className={`main-nav ${menuOpen ? 'is-open' : ''}`} aria-label="Main">
+        <nav id="main-nav" className={`main-nav ${menuOpen ? 'is-open' : ''}`} aria-label={t('nav.main')}>
           <ul>
-            {NAV_LINKS.map(({ label, to, end }) => (
+            {NAV_LINKS.map(({ labelKey, to, end }) => (
               <li key={to}>
                 <NavLink
                   to={to}
@@ -42,17 +33,31 @@ function Header() {
                   onClick={closeMenu}
                   className={({ isActive }) => `main-nav__link ${isActive ? 'is-active' : ''}`}
                 >
-                  {label}
+                  {t(labelKey)}
                 </NavLink>
               </li>
             ))}
             <li>
               <Link to={CONTACT_LINK.to} className="btn btn--primary btn--sm" onClick={closeMenu}>
-                {CONTACT_LINK.label}
+                {t(CONTACT_LINK.labelKey)}
               </Link>
             </li>
           </ul>
         </nav>
+
+        <div className="site-header__actions">
+          <LanguageSwitcher />
+          <button
+            type="button"
+            className="nav-toggle"
+            aria-label={menuOpen ? t('nav.closeMenu') : t('nav.openMenu')}
+            aria-expanded={menuOpen}
+            aria-controls="main-nav"
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            {menuOpen ? <CloseIcon /> : <MenuIcon />}
+          </button>
+        </div>
       </div>
     </header>
   )

@@ -3,6 +3,7 @@ import Reveal from '../components/Reveal'
 import { ArrowRightIcon, CheckIcon, FactoryIcon, GearIcon, GlobeIcon, PackageIcon, WrenchIcon } from '../components/Icons'
 import { COMPANY } from '../constants/company'
 import { IMAGES } from '../constants/images'
+import { useLanguage } from '../locales/i18n'
 import './HomePage.css'
 
 // Deterministic "spark" particles for the hero animation (left %, size px, duration s, delay s)
@@ -21,55 +22,37 @@ const SPARKS = [
   [95, 5, 11, 3.5],
 ]
 
-const SERVICES = [
+const SERVICE_KEYS = [
   {
     icon: FactoryIcon,
-    title: 'Used CNC Machines',
-    tag: 'Looking for a machine?',
-    text: 'Quality pre-owned CNC machines, with a strong focus on Brother CNC machining centres.',
-    points: ['Brother machining centres', 'Inspected & ready for production', 'Sourcing on request'],
+    key: 'machines',
     image: IMAGES.factory,
-    cta: 'View Available Machines',
     to: '/products?category=machine',
   },
   {
     icon: PackageIcon,
-    title: 'CNC Spare Parts',
-    tag: 'Need a part?',
-    text: 'Genuine and compatible CNC parts supplied with confidence.',
-    points: ['Spindles, ball screws & linear guides', 'Servo motors & drives', 'Tool changers & control boards'],
+    key: 'parts',
     image: IMAGES.machineParts,
-    cta: 'Enquire About Parts',
     to: '/contact',
   },
   {
     icon: WrenchIcon,
-    title: 'Maintenance & Repair',
-    tag: 'Machine down?',
-    text: 'On-site support to reduce downtime and improve efficiency.',
-    points: ['Preventive maintenance', 'Repair & machine overhaul', 'Automation upgrades'],
+    key: 'repair',
     image: IMAGES.technician,
-    cta: 'Request Service Support',
-    to: '/contact',
+    to: '/repair-service',
   },
-]
-
-const HIGHLIGHTS = [
-  { icon: GearIcon, value: `${COMPANY.yearsExperience}+`, label: 'Years of industry experience' },
-  { icon: GlobeIcon, value: 'Multi-Market', label: 'Service & support across the region' },
-  { icon: CheckIcon, value: 'One-Stop', label: 'CNC solutions under one roof' },
 ]
 
 const NEW_ARRIVALS = [
   {
     src: 'https://www.yamazen.com/Portals/0/brother-speedio-s1000x1-machine-min.png?ver=w70tM-wxC_xh6PXsLCr_mw%3D%3D?format=webp',
     name: 'Brother SPEEDIO S1000X1',
-    text: 'A high-speed compact machining centre built for precision and productivity. Featuring a 21-tool turret and advanced digital control, this Brother SPEEDIO is ready to support demanding production work.',
+    textKey: 'home.arrivals.speedio',
   },
   {
     src: 'https://5.imimg.com/data5/SELLER/Default/2023/5/310057709/BO/EC/FR/13595935/114-500x500.jpg',
     name: 'Brother TC-31B',
-    text: 'A reliable Brother vertical machining centre with a clear work view, practical control panel and proven build quality — a solid choice for shops looking for dependable CNC capacity.',
+    textKey: 'home.arrivals.tc31b',
   },
 ]
 
@@ -82,6 +65,25 @@ const BRAND_LOGOS = [
 ]
 
 function HomePage() {
+  const { t } = useLanguage()
+
+  const services = SERVICE_KEYS.map(({ icon, key, image, to }) => ({
+    icon,
+    image,
+    to,
+    title: t(`home.services.${key}.title`),
+    tag: t(`home.services.${key}.tag`),
+    text: t(`home.services.${key}.text`),
+    points: t(`home.services.${key}.points`),
+    cta: t(`home.services.${key}.cta`),
+  }))
+
+  const highlights = [
+    { icon: GearIcon, value: `${COMPANY.yearsExperience}+`, label: t('home.highlights.years') },
+    { icon: GlobeIcon, value: t('home.highlights.market'), label: t('home.highlights.marketLabel') },
+    { icon: CheckIcon, value: t('home.highlights.onestop'), label: t('home.highlights.onestopLabel') },
+  ]
+
   return (
     <>
       {/* ---------------- Hero ---------------- */}
@@ -107,21 +109,17 @@ function HomePage() {
 
         <div className="container hero__inner">
           <div className="hero__content">
-            <span className="hero__eyebrow">Professional CNC Solutions</span>
+            <span className="hero__eyebrow">{t('home.eyebrow')}</span>
             <h1 id="hero-title">
-              Your CNC Partner for <span>Reliable Engineering</span> Support
+              {t('home.titleBefore')} <span>{t('home.titleHighlight')}</span> {t('home.titleAfter')}
             </h1>
-            <p>
-              Used CNC machines, spare parts, maintenance and overhaul. Able Engineering keeps your
-              production moving with practical solutions backed by {COMPANY.yearsExperience} years of
-              experience.
-            </p>
+            <p>{t('home.lead', { years: COMPANY.yearsExperience })}</p>
             <div className="hero__actions">
               <a href="#what-we-do" className="btn btn--primary">
-                Explore What We Do <ArrowRightIcon size={18} />
+                {t('home.ctaExplore')} <ArrowRightIcon size={18} />
               </a>
               <Link to="/about" className="btn btn--ghost">
-                About Us
+                {t('home.ctaAbout')}
               </Link>
             </div>
           </div>
@@ -136,33 +134,32 @@ function HomePage() {
             <div className="hero__badge">
               <strong>{COMPANY.yearsExperience}</strong>
               <span>
-                Years of
+                {t('home.badgeYears')}
                 <br />
-                Industry Experience
+                {t('home.badgeIndustry')}
               </span>
             </div>
           </div>
         </div>
 
-        <svg className="hero__wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
-          <polygon points="0,80 1440,0 1440,80" fill="#ffffff" />
+        <svg className="hero__wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+          <polygon points="0,120 1440,0 1440,120" fill="#0b3f91" />
+          <polygon points="0,120 1440,34 1440,120" fill="#1a6adf" />
+          <polygon points="0,120 1440,70 1440,120" fill="#e8f2fc" />
         </svg>
       </section>
 
       {/* ---------------- What we do ---------------- */}
-      <section className="section" id="what-we-do">
+      <section className="section section--ice" id="what-we-do">
         <div className="container">
           <Reveal className="section-head">
-            <span className="eyebrow">What We Do</span>
-            <h2 className="section-title">Machines, Parts &amp; Maintenance in One Place</h2>
-            <p className="section-lead">
-              Choose what you need below. Each service has its own details and a direct way to get
-              in touch.
-            </p>
+            <span className="eyebrow">{t('home.whatWeDo')}</span>
+            <h2 className="section-title">{t('home.servicesTitle')}</h2>
+            <p className="section-lead">{t('home.servicesLead')}</p>
           </Reveal>
 
           <div className="services">
-            {SERVICES.map(({ icon: ServiceIcon, title, tag, text, points, image, cta, to, href }, i) => (
+            {services.map(({ icon: ServiceIcon, title, tag, text, points, image, cta, to }, i) => (
               <Reveal key={title} delay={i * 120} className="service-card">
                 <div className="service-card__image">
                   <img src={image} alt={title} loading="lazy" />
@@ -175,22 +172,16 @@ function HomePage() {
                   <h3>{title}</h3>
                   <p>{text}</p>
                   <ul className="service-card__points">
-                    {points.map((point) => (
+                    {(Array.isArray(points) ? points : []).map((point) => (
                       <li key={point}>
                         <CheckIcon size={16} />
                         {point}
                       </li>
                     ))}
                   </ul>
-                  {to ? (
-                    <Link to={to} className="btn btn--outline service-card__cta">
-                      {cta} <ArrowRightIcon size={18} />
-                    </Link>
-                  ) : (
-                    <a href={href} className="btn btn--outline service-card__cta">
-                      {cta} <ArrowRightIcon size={18} />
-                    </a>
-                  )}
+                  <Link to={to} className="btn btn--outline service-card__cta">
+                    {cta} <ArrowRightIcon size={18} />
+                  </Link>
                 </div>
               </Reveal>
             ))}
@@ -199,9 +190,9 @@ function HomePage() {
       </section>
 
       {/* ---------------- Highlights ---------------- */}
-      <section className="highlights" aria-label="Company highlights">
+      <section className="highlights" aria-label={t('home.highlightsLabel')}>
         <div className="container highlights__grid">
-          {HIGHLIGHTS.map(({ icon: HighlightIcon, value, label }, i) => (
+          {highlights.map(({ icon: HighlightIcon, value, label }, i) => (
             <Reveal key={label} delay={i * 120} className="highlight">
               <span className="highlight__icon">
                 <HighlightIcon size={30} />
@@ -216,46 +207,42 @@ function HomePage() {
       </section>
 
       {/* ---------------- About teaser ---------------- */}
-      <section className="section">
+      <section className="section section--panel">
         <div className="container teaser">
           <Reveal className="teaser__image">
-            <img src={IMAGES.machinery} alt="CNC machinery at work" loading="lazy" />
+            <img src={IMAGES.machinery} alt={t('home.machineryAlt')} loading="lazy" />
           </Reveal>
           <Reveal delay={120} className="teaser__content">
-            <span className="eyebrow">About Able Engineering</span>
-            <h2 className="section-title">Built on Experience. Driven by Technical Expertise.</h2>
-            <p>
-              We are a professional engineering service company specializing in CNC machinery,
-              helping customers maintain machine reliability, reduce downtime and improve overall
-              production efficiency.
-            </p>
+            <span className="eyebrow">{t('home.aboutEyebrow')}</span>
+            <h2 className="section-title">{t('home.aboutTitle')}</h2>
+            <p>{t('home.aboutText')}</p>
             <Link to="/about" className="btn btn--outline">
-              Learn More About Us <ArrowRightIcon size={18} />
+              {t('home.aboutCta')} <ArrowRightIcon size={18} />
             </Link>
           </Reveal>
         </div>
       </section>
 
       {/* ---------------- New arrivals ---------------- */}
-      <section className="section section--tight" id="new-arrival" aria-labelledby="new-arrival-title">
+      <section className="section section--ice section--tight" id="new-arrival" aria-labelledby="new-arrival-title">
         <div className="container">
           <Reveal className="section-head">
             <h2 id="new-arrival-title" className="section-title">
-              New Arrival
+              {t('home.newArrival')}
             </h2>
           </Reveal>
 
           <div className="new-arrivals">
-            {NEW_ARRIVALS.map(({ src, name, text }, i) => (
+            {NEW_ARRIVALS.map(({ src, name, textKey }, i) => (
               <Reveal key={name} delay={i * 120} className="new-arrival">
                 <div className="new-arrival__image">
                   <img src={src} alt={name} loading="lazy" />
                 </div>
                 <div className="new-arrival__content">
                   <h3>{name}</h3>
-                  <p>{text}</p>
+                  <p>{t(textKey)}</p>
                   <button type="button" className="btn btn--outline">
-                    See More Details <ArrowRightIcon size={18} />
+                    {t('home.seeMore')} <ArrowRightIcon size={18} />
                   </button>
                 </div>
               </Reveal>
@@ -265,7 +252,7 @@ function HomePage() {
       </section>
 
       {/* ---------------- Brand logos ---------------- */}
-      <section className="brand-marquee" aria-label="Product brands we support">
+      <section className="brand-marquee" aria-label={t('home.brandsLabel')}>
         <div className="brand-marquee__track">
           {[0, 1].flatMap((set) =>
             BRAND_LOGOS.map((logo) => (
@@ -286,11 +273,11 @@ function HomePage() {
       <section className="cta">
         <Reveal className="container cta__inner">
           <div>
-            <h2>Need a machine, a part or a maintenance partner?</h2>
-            <p>Talk to our team and keep your production moving forward.</p>
+            <h2>{t('home.ctaTitle')}</h2>
+            <p>{t('home.ctaText')}</p>
           </div>
           <Link to="/contact" className="btn btn--primary">
-            Contact Us <ArrowRightIcon size={18} />
+            {t('home.ctaButton')} <ArrowRightIcon size={18} />
           </Link>
         </Reveal>
       </section>

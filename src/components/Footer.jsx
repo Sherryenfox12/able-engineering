@@ -1,9 +1,15 @@
 import { Link } from 'react-router-dom'
 import { BRANCHES, COMPANY, CONTACT_LINK, NAV_LINKS } from '../constants/company'
+import { useLanguage } from '../locales/i18n'
 import { GearIcon } from './Icons'
 import './Footer.css'
 
-const OFFERINGS = ['Used CNC Machines', 'CNC Spare Parts', 'Maintenance & Repair', 'Machine Overhaul']
+const OFFERING_KEYS = [
+  'footer.offerings.machines',
+  'footer.offerings.parts',
+  'footer.offerings.maintenance',
+  'footer.offerings.overhaul',
+]
 
 const CURRENT_YEAR = new Date().getFullYear()
 
@@ -11,6 +17,9 @@ const CURRENT_YEAR = new Date().getFullYear()
 const MAIN_BRANCH = BRANCHES[0]
 
 function Footer() {
+  const { t } = useLanguage()
+  const branchName = t(`contact.branches.${MAIN_BRANCH.name}`) || MAIN_BRANCH.name
+
   return (
     <footer className="site-footer">
       <div className="container site-footer__grid">
@@ -23,41 +32,41 @@ function Footer() {
               <strong>ABLE</strong> ENGINEERING
             </span>
           </Link>
-          <p>{COMPANY.tagline}. Building a stronger tomorrow together.</p>
+          <p>{t('footer.aboutLine', { tagline: t('company.tagline') })}</p>
         </div>
 
         <div>
-          <h3>Quick Links</h3>
+          <h3>{t('footer.quickLinks')}</h3>
           <ul>
-            {[...NAV_LINKS, CONTACT_LINK].map(({ label, to }) => (
+            {[...NAV_LINKS, CONTACT_LINK].map(({ labelKey, to }) => (
               <li key={to}>
-                <Link to={to}>{label}</Link>
+                <Link to={to}>{t(labelKey)}</Link>
               </li>
             ))}
           </ul>
         </div>
 
         <div>
-          <h3>What We Offer</h3>
+          <h3>{t('footer.whatWeOffer')}</h3>
           <ul>
-            {OFFERINGS.map((item) => (
-              <li key={item}>{item}</li>
+            {OFFERING_KEYS.map((key) => (
+              <li key={key}>{t(key)}</li>
             ))}
           </ul>
         </div>
 
         <div>
-          <h3>{MAIN_BRANCH.name}</h3>
+          <h3>{branchName}</h3>
           <ul>
             <li>{MAIN_BRANCH.email}</li>
             <li>
-              WhatsApp:{' '}
+              {t('footer.whatsapp')}:{' '}
               <a href={MAIN_BRANCH.whatsapp.url} target="_blank" rel="noopener noreferrer">
                 {MAIN_BRANCH.whatsapp.display}
               </a>
             </li>
             <li>
-              Phone: <a href={`tel:${MAIN_BRANCH.phone.tel}`}>{MAIN_BRANCH.phone.display}</a>
+              {t('footer.phone')}: <a href={`tel:${MAIN_BRANCH.phone.tel}`}>{MAIN_BRANCH.phone.display}</a>
             </li>
             <li>{MAIN_BRANCH.warehouse}</li>
           </ul>
@@ -67,9 +76,9 @@ function Footer() {
       <div className="site-footer__bottom">
         <div className="container">
           <span>
-            &copy; {CURRENT_YEAR} {COMPANY.name}. All rights reserved.
+            &copy; {CURRENT_YEAR} {COMPANY.name}. {t('footer.rights')}
           </span>
-          <span>{COMPANY.yearsExperience}+ years of industry experience</span>
+          <span>{t('footer.experience', { years: COMPANY.yearsExperience })}</span>
         </div>
       </div>
     </footer>

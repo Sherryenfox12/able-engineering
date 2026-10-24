@@ -21,10 +21,11 @@ export const BRANCHES = [
 ]
 
 export const NAV_LINKS = [
-  { label: 'Home', to: '/', end: true },
-  { label: 'About Us', to: '/about' },
-  { label: 'Products', to: '/products' },
+  { labelKey: 'nav.home', to: '/', end: true },
+  { labelKey: 'nav.about', to: '/about' },
+  { labelKey: 'nav.products', to: '/products' },
+  { labelKey: 'nav.repair', to: '/repair-service' },
 ]
 
 // Shown as the highlighted button in the header and as a link in the footer.
-export const CONTACT_LINK = { label: 'Contact Us', to: '/contact' }
+export const CONTACT_LINK = { labelKey: 'nav.contact', to: '/contact' }
