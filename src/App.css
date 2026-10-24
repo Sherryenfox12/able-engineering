@@ -1,0 +1,6 @@
+/* App-level styles. Global tokens live in index.css; each page/component has its own CSS file. */
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+}

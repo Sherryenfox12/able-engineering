@@ -1,0 +1,331 @@
+{
+  "lang": {
+    "en": "English",
+    "zh": "中文",
+    "id": "Bahasa Indonesia",
+    "label": "Bahasa",
+    "switch": "Ganti bahasa"
+  },
+  "nav": {
+    "home": "Beranda",
+    "about": "Tentang Kami",
+    "products": "Produk",
+    "repair": "Perbaikan dan Servis",
+    "contact": "Hubungi Kami",
+    "openMenu": "Buka menu",
+    "closeMenu": "Tutup menu",
+    "main": "Navigasi utama"
+  },
+  "company": {
+    "tagline": "Solusi CNC Profesional, Perawatan & Dukungan Teknik",
+    "regions": "Malaysia, Thailand, dan lebih luas"
+  },
+  "footer": {
+    "aboutLine": "{tagline}. Membangun masa depan yang lebih kuat bersama.",
+    "quickLinks": "Tautan Cepat",
+    "whatWeOffer": "Yang Kami Tawarkan",
+    "offerings": {
+      "machines": "Mesin CNC Bekas",
+      "parts": "Suku Cadang CNC",
+      "maintenance": "Perawatan & Perbaikan",
+      "overhaul": "Overhaul Mesin"
+    },
+    "whatsapp": "WhatsApp",
+    "phone": "Telepon",
+    "rights": "Hak cipta dilindungi.",
+    "experience": "{years}+ tahun pengalaman industri"
+  },
+  "home": {
+    "eyebrow": "Solusi CNC Profesional",
+    "titleBefore": "Mitra CNC Anda untuk",
+    "titleHighlight": "Dukungan Teknik",
+    "titleAfter": "yang Andal",
+    "lead": "Mesin CNC bekas, suku cadang, perawatan dan overhaul. Able Engineering menjaga produksi Anda tetap berjalan dengan solusi praktis berdasarkan {years} tahun pengalaman.",
+    "ctaExplore": "Jelajahi Layanan Kami",
+    "ctaAbout": "Tentang Kami",
+    "badgeYears": "Tahun",
+    "badgeIndustry": "Pengalaman Industri",
+    "whatWeDo": "Yang Kami Lakukan",
+    "servicesTitle": "Mesin, Suku Cadang & Perawatan di Satu Tempat",
+    "servicesLead": "Pilih yang Anda butuhkan di bawah. Setiap layanan memiliki detail sendiri dan cara langsung untuk menghubungi kami.",
+    "services": {
+      "machines": {
+        "title": "Mesin CNC Bekas",
+        "tag": "Mencari mesin?",
+        "text": "Mesin CNC bekas berkualitas, dengan fokus kuat pada pusat mesin Brother CNC.",
+        "points": ["Pusat mesin Brother", "Diperiksa & siap produksi", "Pencarian atas permintaan"],
+        "cta": "Lihat Mesin Tersedia"
+      },
+      "parts": {
+        "title": "Suku Cadang CNC",
+        "tag": "Butuh suku cadang?",
+        "text": "Suku cadang CNC asli dan kompatibel yang dipasok dengan percaya diri.",
+        "points": ["Spindle, ball screw & linear guide", "Servo motor & drive", "Tool changer & control board"],
+        "cta": "Tanya Suku Cadang"
+      },
+      "repair": {
+        "title": "Perawatan & Perbaikan",
+        "tag": "Mesin berhenti?",
+        "text": "Dukungan di lokasi untuk mengurangi downtime dan meningkatkan efisiensi.",
+        "points": ["Perawatan preventif", "Perbaikan & overhaul mesin", "Upgrade otomasi"],
+        "cta": "Lihat Perbaikan & Servis"
+      }
+    },
+    "highlights": {
+      "years": "Tahun pengalaman industri",
+      "market": "Multi-Pasar",
+      "marketLabel": "Layanan & dukungan di seluruh wilayah",
+      "onestop": "Satu Pintu",
+      "onestopLabel": "Solusi CNC dalam satu atap"
+    },
+    "aboutEyebrow": "Tentang Able Engineering",
+    "aboutTitle": "Dibangun dari Pengalaman. Didorong Keahlian Teknis.",
+    "aboutText": "Kami adalah perusahaan jasa teknik profesional yang mengkhususkan diri pada mesin CNC, membantu pelanggan menjaga keandalan mesin, mengurangi downtime, dan meningkatkan efisiensi produksi secara keseluruhan.",
+    "aboutCta": "Pelajari Lebih Lanjut Tentang Kami",
+    "newArrival": "Kedatangan Baru",
+    "seeMore": "Lihat Detail Lebih Lanjut",
+    "arrivals": {
+      "speedio": "Pusat mesin kompak berkecepatan tinggi untuk presisi dan produktivitas. Dilengkapi turret 21 tool dan kontrol digital canggih, Brother SPEEDIO ini siap mendukung pekerjaan produksi yang menuntut.",
+      "tc31b": "Pusat mesin vertikal Brother yang andal dengan pandangan kerja yang jelas, panel kontrol praktis, dan kualitas yang terbukti — pilihan solid bagi bengkel yang membutuhkan kapasitas CNC yang dapat diandalkan."
+    },
+    "ctaTitle": "Butuh mesin, suku cadang, atau mitra perawatan?",
+    "ctaText": "Bicara dengan tim kami dan jaga produksi Anda terus maju.",
+    "ctaButton": "Hubungi Kami",
+    "machineryAlt": "Mesin CNC sedang beroperasi",
+    "brandsLabel": "Merek produk yang kami dukung",
+    "highlightsLabel": "Sorotan perusahaan"
+  },
+  "about": {
+    "eyebrow": "02  |  Tentang Kami",
+    "title": "Tentang Able Engineering",
+    "lead": "Solusi CNC profesional, perawatan & dukungan teknik.",
+    "whoWeAre": "Siapa Kami",
+    "partnerTitle": "Mitra CNC Anda untuk",
+    "partnerTitleLine2": "Dukungan Teknik yang Andal",
+    "p1": "Able Engineering adalah perusahaan jasa teknik profesional yang mengkhususkan diri pada mesin CNC, dengan fokus kuat pada pusat mesin Brother CNC.",
+    "p2": "Kami menyediakan dukungan menyeluruh meliputi penjualan mesin CNC, perawatan dan perbaikan, pasokan suku cadang, overhaul mesin, upgrade otomasi, dan dukungan teknis.",
+    "p3": "Didukung pengalaman industri yang luas dan keahlian teknis, kami berkomitmen membantu pelanggan menjaga keandalan mesin, mengurangi downtime, dan meningkatkan efisiensi produksi secara keseluruhan.",
+    "focus": ["Mesin CNC", "Perawatan", "Perbaikan", "Suku Cadang", "Dukungan Teknik"],
+    "factoryAlt": "Fasilitas manufaktur CNC otomatis",
+    "vmEyebrow": "Visi & Misi",
+    "vmTitle": "Membangun Masa Depan yang Lebih Kuat Bersama",
+    "vmCaption": "Solusi andal untuk masa depan yang lebih produktif",
+    "engineersAlt": "Insinyur bekerja dengan mesin CNC",
+    "vision": "Visi Kami",
+    "visionText": "Menjadi mitra teknik CNC yang dipercaya.",
+    "mission": "Misi Kami",
+    "missionText": "Menjaga pelanggan kami terus maju.",
+    "experience": "Pengalaman Kami",
+    "experienceTitle": "Dibangun dari Pengalaman.",
+    "experienceTitleLine2": "Didorong Keahlian Teknis.",
+    "experienceP1": "Able Engineering telah mengembangkan pengalaman luas dalam perawatan mesin CNC dan aplikasi teknik, mendukung pelanggan dengan solusi praktis sepanjang siklus hidup mesin.",
+    "experienceP2": "Kemampuan teknis kami mencakup komponen utama mesin CNC termasuk:",
+    "capabilities": ["Spindle", "Ball screw", "Linear guide", "Servo motor", "Drive", "Tool changer", "Control board"],
+    "experienceP3": "Dengan pengetahuan teknis, dukungan suku cadang, dan kemampuan pengujian khusus, kami merespons masalah mesin secara efisien dan membantu pelanggan memulihkan operasi dengan percaya diri.",
+    "techAlt": "Teknisi memeriksa komponen mesin CNC",
+    "stats": {
+      "years": "Tahun Pengalaman Industri",
+      "market": "Multi-Pasar",
+      "marketLabel": "Layanan & Dukungan",
+      "onestop": "Satu Pintu",
+      "onestopLabel": "Solusi CNC"
+    },
+    "journey": "Perjalanan Kami",
+    "regionTitle": "Memperluas Dukungan Regional Kami",
+    "regionText": "Terus mendukung pelanggan di {regions}.",
+    "backHome": "Kembali ke Beranda"
+  },
+  "products": {
+    "eyebrow": "Produk Kami",
+    "title": "Mesin CNC & Suku Cadang",
+    "lead": "Mesin CNC Brother bekas dan suku cadang asli, siap saat Anda membutuhkannya.",
+    "sidebarTitle": "Produk",
+    "chooseCategory": "Pilih kategori",
+    "allProducts": "Semua Produk",
+    "allBlurb": "Jelajahi mesin CNC dan suku cadang kami, atau minta kami mencari yang Anda butuhkan.",
+    "cantFind": "Tidak menemukannya?",
+    "sourceIt": "Kami bisa mencarikannya untuk Anda",
+    "searchPlaceholder": "Cari produk...",
+    "searchLabel": "Cari produk",
+    "photoSoon": "Foto segera hadir",
+    "enquire": "Tanya Sekarang",
+    "enquireMessage": "Halo Able Engineering, saya tertarik dengan \"{name}\". Bisakah Anda memberi tahu harga dan ketersediaan?",
+    "sourceMessage": "Halo Able Engineering, saya mencari mesin CNC / suku cadang. Bisakah Anda membantu mencarikannya?",
+    "askMessage": "Halo Able Engineering, saya mencari {item}. Apakah tersedia?",
+    "defaultItem": "suku cadang CNC",
+    "emptySearchTitle": "Tidak ada produk yang cocok dengan pencarian Anda",
+    "emptySearchText": "Coba kata kunci lain, atau beri tahu kami kebutuhan Anda dan kami akan mencarikannya.",
+    "emptyStockTitle": "Stok baru sedang diperbarui",
+    "emptyStockText": "Kategori ini sedang diperbarui. Hubungi kami untuk ketersediaan terkini atau pencarian.",
+    "askWhatsApp": "Tanya di WhatsApp",
+    "ctaTitle": "Butuh sesuatu yang tidak terdaftar?",
+    "ctaText": "Tim kami dapat mencari mesin dan suku cadang atas permintaan. Kirimkan modelnya dan kami akan menghubungi Anda.",
+    "ctaButton": "Hubungi Kami",
+    "categoriesLabel": "Kategori produk",
+    "categories": {
+      "machine": { "label": "Mesin", "blurb": "Mesin CNC bekas, terutama pusat mesin Brother." },
+      "ball-screw": { "label": "Ball Screw & Cover", "blurb": "Set poros ball screw dan cover untuk mesin Brother." },
+      "lm-guide": { "label": "LM Guide", "blurb": "Linear motion guide dan block." },
+      "motor": { "label": "Motor", "blurb": "Servo dan spindle motor." },
+      "amplifier": { "label": "Amplifier", "blurb": "Servo amplifier dan drive." },
+      "spare-parts": { "label": "Suku Cadang", "blurb": "Tool changer, control board, dan suku cadang CNC lainnya." }
+    },
+    "condition": {
+      "Used": "Bekas",
+      "Parts": "Suku Cadang"
+    },
+    "items": {
+      "brother-speedio-s1000x1": {
+        "summary": "Pusat mesin kompak berkecepatan tinggi untuk presisi dan produktivitas.",
+        "highlights": ["Seri Brother SPEEDIO", "Turret 21 tool", "Kontrol digital canggih"]
+      },
+      "brother-tc-31b-machine": {
+        "summary": "Pusat mesin vertikal andal dengan kualitas yang terbukti.",
+        "highlights": ["Pusat mesin vertikal Brother", "Pandangan kerja jelas", "Panel kontrol praktis"]
+      },
+      "ball-screw-x-tc-31a": {
+        "summary": "Set ball screw poros X untuk Brother TC-31A.",
+        "highlights": ["Cocok Brother TC-31A", "Poros X", "Ball screw & nut"]
+      },
+      "ball-screw-x-tc-20a": {
+        "summary": "Set ball screw poros X untuk Brother TC-20A.",
+        "highlights": ["Cocok Brother TC-20A", "Poros X", "Ball screw & nut"]
+      },
+      "ball-screw-x-tc-31b": {
+        "summary": "Set ball screw poros X untuk Brother TC-31B.",
+        "highlights": ["Cocok Brother TC-31B", "Poros X", "Ball screw & nut"]
+      },
+      "lm-guide-block-set": {
+        "summary": "Rel linear motion guide dengan sliding block untuk gerakan poros yang halus dan presisi.",
+        "highlights": ["Set rail & block", "Untuk poros X / Y / Z", "Dipotong sesuai permintaan"]
+      },
+      "lm-guide-block-only": {
+        "summary": "Blok sliding pengganti untuk mengembalikan perjalanan halus dan akurasi posisi.",
+        "highlights": ["Blok pengganti", "Tipe flanged", "Mesin Brother"]
+      },
+      "lm-guide-grease-nipple": {
+        "summary": "Unit pelumasan yang menjaga blok LM guide terlindungi dan lebih awet.",
+        "highlights": ["Memperpanjang umur guide", "Mudah dipasang", "Unit kompatibel atas permintaan"]
+      },
+      "servo-motor-axis": {
+        "summary": "Servo motor poros untuk drive X / Y / Z, diuji sebelum dijual.",
+        "highlights": ["Poros X / Y / Z", "Diuji berfungsi", "Brother & merek lain"]
+      },
+      "spindle-motor": {
+        "summary": "Spindle motor berkecepatan tinggi untuk pusat mesin.",
+        "highlights": ["Tipe high-speed", "Diuji berfungsi", "Perbaikan juga tersedia"]
+      },
+      "servo-motor-mitsubishi": {
+        "summary": "Servo motor Mitsubishi Electric untuk CNC dan otomasi.",
+        "highlights": ["Mitsubishi Electric", "Diuji berfungsi", "Daftar model atas permintaan"]
+      },
+      "servo-amplifier": {
+        "summary": "Servo amplifier yang menggerakkan dan mengontrol motor poros.",
+        "highlights": ["Drive poros", "Diuji berfungsi", "Perbaikan juga tersedia"]
+      },
+      "spindle-amplifier": {
+        "summary": "Unit drive spindle untuk kontrol kecepatan yang stabil.",
+        "highlights": ["Drive spindle", "Diuji berfungsi", "Mesin Brother"]
+      },
+      "power-supply-unit": {
+        "summary": "Modul power supply untuk unit drive dan kontrol CNC.",
+        "highlights": ["Power supply drive", "Diuji berfungsi", "Penggantian cepat"]
+      },
+      "tool-changer-arm": {
+        "summary": "Suku cadang automatic tool changer untuk pergantian tool yang andal dan cepat.",
+        "highlights": ["Suku cadang ATC", "Brother SPEEDIO / TC series", "Perbaikan juga tersedia"]
+      },
+      "control-board": {
+        "summary": "Papan sirkuit kontrol dan I/O, diuji dan siap dipasang.",
+        "highlights": ["Papan kontrol / I/O", "Diuji berfungsi", "Perbaikan board tersedia"]
+      },
+      "pneumatic-cylinder": {
+        "summary": "Silinder udara dan solenoid valve untuk pintu, clamp, dan tool-change.",
+        "highlights": ["SMC & kompatibel", "Silinder & valve", "Penggantian cepat"]
+      },
+      "operator-panel": {
+        "summary": "Pengganti panel kontrol, display, dan keypad untuk mesin Anda.",
+        "highlights": ["Panel & display", "Diuji berfungsi", "Mesin Brother"]
+      }
+    }
+  },
+  "repair": {
+    "eyebrow": "Layanan Kami",
+    "title": "Perbaikan dan Servis",
+    "lead": "Perawatan, perbaikan, dan overhaul CNC di lokasi untuk mengurangi downtime dan menjaga produksi tetap berjalan.",
+    "support": "Dukungan Mesin",
+    "introTitle": "Jaga CNC Anda Tetap Berjalan.",
+    "introTitleLine2": "Kurangi Downtime dengan Cepat.",
+    "introP1": "Able Engineering menyediakan dukungan perawatan dan perbaikan praktis untuk mesin CNC, dengan fokus kuat pada pusat mesin Brother CNC.",
+    "introP2": "Dari servis preventif hingga kerusakan mendesak dan overhaul penuh, tim kami membantu memulihkan keandalan dan meningkatkan efisiensi produksi — didukung {years}+ tahun pengalaman industri.",
+    "coverage": [
+      "Spindle",
+      "Ball screw",
+      "Linear guide",
+      "Servo motor & drive",
+      "Tool changer",
+      "Control board",
+      "Upgrade otomasi",
+      "Dukungan Brother CNC"
+    ],
+    "techAlt": "Teknisi mengerjakan peralatan CNC",
+    "offerEyebrow": "Yang Kami Tawarkan",
+    "offerTitle": "Perawatan, Perbaikan & Overhaul",
+    "offerLead": "Satu mitra untuk pekerjaan servis yang menjaga bengkel Anda produktif.",
+    "services": {
+      "preventive": {
+        "title": "Perawatan Preventif",
+        "text": "Servis terjadwal untuk mendeteksi keausan lebih awal, menjaga akurasi mesin, dan menghindari berhenti tak terduga di lantai produksi."
+      },
+      "repair": {
+        "title": "Perbaikan & Troubleshooting",
+        "text": "Diagnosis dan perbaikan di lokasi untuk masalah mekanik, elektrik, dan kontrol agar produksi dapat dilanjutkan dengan percaya diri."
+      },
+      "overhaul": {
+        "title": "Overhaul Mesin",
+        "text": "Rebuild penuh atau sebagian — spindle, ball screw, guide, dan lainnya — untuk memulihkan performa dan memperpanjang umur mesin."
+      }
+    },
+    "howEyebrow": "Cara Kerjanya",
+    "howTitle": "Jalur Sederhana dari Masalah ke Uptime",
+    "process": {
+      "01": {
+        "title": "Ceritakan masalahnya",
+        "text": "Bagikan model mesin, gejala, dan tingkat urgensi. Kami sarankan langkah praktis tercepat berikutnya."
+      },
+      "02": {
+        "title": "Periksa & buat penawaran",
+        "text": "Kami menilai di lokasi atau dari foto dan riwayat suku cadang, lalu konfirmasi ruang lingkup, suku cadang, dan jadwal."
+      },
+      "03": {
+        "title": "Perbaiki & verifikasi",
+        "text": "Pekerjaan diselesaikan dengan pengujian agar mesin siap kembali ke produksi."
+      }
+    },
+    "whyTitle": "Mengapa bengkel menghubungi Able Engineering",
+    "why": [
+      "Dukungan praktis yang fokus pada lantai produksi",
+      "Pasokan suku cadang bersamaan dengan perbaikan",
+      "Pengalaman di berbagai komponen CNC utama",
+      "Layanan regional di {regions}"
+    ],
+    "ctaTitle": "Mesin berhenti atau saatnya diservis?",
+    "ctaText": "Beritahu kami model dan masalahnya — kami bantu Anda kembali berproduksi.",
+    "ctaButton": "Minta Dukungan Servis"
+  },
+  "contact": {
+    "eyebrow": "Hubungi Kami",
+    "title": "Hubungi Kami",
+    "lead": "Mencari mesin CNC, suku cadang, atau dukungan perawatan? Bicara dengan tim kami.",
+    "location": "Lokasi Kami",
+    "email": "Email",
+    "whatsapp": "WhatsApp",
+    "phone": "Telepon",
+    "warehouse": "Gudang",
+    "chatWhatsApp": "Chat di WhatsApp",
+    "mapTitle": "Peta lokasi {name}",
+    "branches": {
+      "Penang Branch": "Cabang Penang"
+    }
+  }
+}
