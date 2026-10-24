@@ -22,9 +22,9 @@ export const BRANCHES = [
 
 export const NAV_LINKS = [
   { labelKey: 'nav.home', to: '/', end: true },
-  { labelKey: 'nav.about', to: '/about' },
   { labelKey: 'nav.products', to: '/products' },
   { labelKey: 'nav.repair', to: '/repair-service' },
+  { labelKey: 'nav.about', to: '/about' },
 ]
 
 // Shown as the highlighted button in the header and as a link in the footer.
