@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { BRANCHES, COMPANY, CONTACT_LINK, NAV_LINKS } from '../constants/company'
 import { useLanguage } from '../locales/i18n'
-import { GearIcon } from './Icons'
 import './Footer.css'
 
 const OFFERING_KEYS = [
@@ -25,12 +24,7 @@ function Footer() {
       <div className="container site-footer__grid">
         <div className="site-footer__about">
           <Link to="/" className="footer-brand">
-            <span className="footer-brand__mark">
-              <GearIcon size={20} />
-            </span>
-            <span>
-              <strong>ABLE</strong> ENGINEERING
-            </span>
+            <img src="/logo.png" alt={COMPANY.name} className="footer-brand__logo" />
           </Link>
           <p>{t('footer.aboutLine', { tagline: t('company.tagline') })}</p>
         </div>

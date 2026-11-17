@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { COMPANY, CONTACT_LINK, NAV_LINKS } from '../constants/company'
 import { LanguageSwitcher, useLanguage } from '../locales/i18n'
-import { CloseIcon, GearIcon, MenuIcon } from './Icons'
+import { CloseIcon, MenuIcon } from './Icons'
 import './Header.css'
 
 function Header() {
@@ -14,13 +14,7 @@ function Header() {
     <header className="site-header">
       <div className="container site-header__inner">
         <Link to="/" className="brand" onClick={closeMenu} aria-label={`${COMPANY.name} - Home`}>
-          <span className="brand__mark">
-            <GearIcon size={22} />
-          </span>
-          <span className="brand__text">
-            <span className="brand__name">ABLE</span>
-            <span className="brand__sub">ENGINEERING</span>
-          </span>
+          <img src="/logo.png" alt={COMPANY.name} className="brand__logo" />
         </Link>
 
         <nav id="main-nav" className={`main-nav ${menuOpen ? 'is-open' : ''}`} aria-label={t('nav.main')}>

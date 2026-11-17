@@ -84,6 +84,9 @@
     "aboutCta": "Pelajari Lebih Lanjut Tentang Kami",
     "newArrival": "Kedatangan Baru",
     "seeMore": "Lihat Detail Lebih Lanjut",
+    "eventsTitle": "Acara",
+    "eventsLead": "Kabar terbaru dari Able Engineering.",
+    "eventsViewAll": "Lihat semua",
     "arrivals": {
       "speedio": "Pusat mesin kompak berkecepatan tinggi untuk presisi dan produktivitas. Dilengkapi turret 21 tool dan kontrol digital canggih, Brother SPEEDIO ini siap mendukung pekerjaan produksi yang menuntut.",
       "tc31b": "Pusat mesin vertikal Brother yang andal dengan pandangan kerja yang jelas, panel kontrol praktis, dan kualitas yang terbukti — pilihan solid bagi bengkel yang membutuhkan kapasitas CNC yang dapat diandalkan."
@@ -112,9 +115,9 @@
     "vmCaption": "Solusi andal untuk masa depan yang lebih produktif",
     "engineersAlt": "Insinyur bekerja dengan mesin CNC",
     "vision": "Visi Kami",
-    "visionText": "Menjadi mitra teknik CNC yang dipercaya.",
+    "visionText": "Menjadi mitra pilihan Malaysia dalam mesin CNC dan dukungan teknik, membantu produsen mencapai produksi yang andal, efisien, dan kompetitif.",
     "mission": "Misi Kami",
-    "missionText": "Menjaga pelanggan kami terus maju.",
+    "missionText": "Memperkuat kapabilitas manufaktur melalui mesin CNC yang andal, suku cadang berkualitas, serta layanan perbaikan dan refurbishment ahli. Kami berkomitmen memaksimalkan kinerja peralatan, meminimalkan downtime produksi, dan menciptakan nilai jangka panjang melalui keunggulan teknis, pengiriman tepat waktu, dukungan responsif, dan kemitraan yang terpercaya.",
     "experience": "Pengalaman Kami",
     "experienceTitle": "Dibangun dari Pengalaman.",
     "experienceTitleLine2": "Didorong Keahlian Teknis.",
@@ -134,6 +137,18 @@
     "regionTitle": "Memperluas Dukungan Regional Kami",
     "regionText": "Terus mendukung pelanggan di {regions}.",
     "backHome": "Kembali ke Beranda"
+  },
+  "events": {
+    "eyebrow": "Acara",
+    "title": "Acara Kami",
+    "lead": "Sorotan, kegiatan, dan kabar terbaru dari Able Engineering.",
+    "emptyTitle": "Belum ada acara",
+    "emptyText": "Belum ada yang bisa ditampilkan saat ini. Silakan cek kembali nanti, atau hubungi kami.",
+    "contact": "Hubungi Kami",
+    "loadingMore": "Memuat lebih banyak...",
+    "loadErrorTitle": "Acara tidak dapat dimuat",
+    "loadErrorText": "Periksa koneksi Anda lalu coba lagi.",
+    "retry": "Coba lagi"
   },
   "products": {
     "eyebrow": "Produk Kami",
@@ -162,6 +177,17 @@
     "ctaText": "Tim kami dapat mencari mesin dan suku cadang atas permintaan. Kirimkan modelnya dan kami akan menghubungi Anda.",
     "ctaButton": "Hubungi Kami",
     "categoriesLabel": "Kategori produk",
+    "viewDetails": "Lihat detail",
+    "close": "Tutup",
+    "descriptionLabel": "Deskripsi",
+    "photoLabel": "Foto {n} dari {total}",
+    "previousPhoto": "Foto sebelumnya",
+    "nextPhoto": "Foto berikutnya",
+    "itemCount": "{count} produk",
+    "loadingMore": "Memuat lebih banyak...",
+    "loadErrorTitle": "Produk tidak dapat dimuat",
+    "loadErrorText": "Periksa koneksi Anda lalu coba lagi.",
+    "retry": "Coba lagi",
     "categories": {
       "machine": { "label": "Mesin", "blurb": "Mesin CNC bekas, terutama pusat mesin Brother." },
       "ball-screw": { "label": "Ball Screw & Cover", "blurb": "Set poros ball screw dan cover untuk mesin Brother." },
@@ -172,7 +198,8 @@
     },
     "condition": {
       "Used": "Bekas",
-      "Parts": "Suku Cadang"
+      "Parts": "Suku Cadang",
+      "New": "Baru"
     },
     "items": {
       "brother-speedio-s1000x1": {
