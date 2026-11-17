@@ -1,0 +1,125 @@
+.admin-dashboard {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  background: var(--sky-50);
+}
+
+.admin-dashboard__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--white);
+}
+
+.admin-dashboard__eyebrow {
+  margin: 0 0 0.25rem;
+  color: var(--blue-500);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.admin-dashboard__header h1 {
+  font-size: 1.5rem;
+}
+
+.admin-dashboard__user {
+  margin-top: 0.35rem;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.admin-dashboard__body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  min-height: 0;
+}
+
+.admin-dashboard__sidebar {
+  border-right: 1px solid var(--border);
+  background: var(--white);
+  padding: 1.25rem 0.9rem;
+}
+
+.admin-dashboard__sidebar-label {
+  margin: 0 0.65rem 0.65rem;
+  color: var(--text);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.admin-dashboard__nav {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.admin-dashboard__nav-btn {
+  border: 0;
+  background: transparent;
+  text-align: left;
+  padding: 0.7rem 0.85rem;
+  border-radius: 10px;
+  color: var(--text-h);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.admin-dashboard__nav-btn:hover {
+  background: var(--sky-50);
+}
+
+.admin-dashboard__nav-btn.is-active {
+  background: #e8f1ff;
+  color: var(--blue-600);
+}
+
+.admin-dashboard__main {
+  padding: 1.25rem 1.5rem 2rem;
+  overflow: auto;
+}
+
+.admin-dashboard__placeholder {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.admin-dashboard__placeholder h2 {
+  margin-bottom: 0.35rem;
+  font-size: 1.2rem;
+}
+
+.admin-dashboard__placeholder p {
+  color: var(--text);
+}
+
+@media (max-width: 860px) {
+  .admin-dashboard__body {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-dashboard__sidebar {
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .admin-dashboard__nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .admin-dashboard__header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

@@ -1,0 +1,50 @@
+/* Language tabs inside the event form */
+.lang-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0.3rem;
+  border-radius: 999px;
+  background: var(--sky-100);
+  justify-self: start;
+}
+
+.lang-tab {
+  position: relative;
+  padding: 0.4rem 1rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-h);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.lang-tab:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.lang-tab.is-active {
+  background: var(--blue-500);
+  color: #fff;
+}
+
+/* Small dot = this language already has a title */
+.lang-tab.has-content::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  right: 7px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #1faa59;
+}
+
+.product-item__langs {
+  display: flex;
+  gap: 0.35rem;
+}

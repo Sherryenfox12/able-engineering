@@ -1,10 +1,24 @@
+import { useCallback, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import DetailDialog from '../components/DetailDialog'
 import Reveal from '../components/Reveal'
 import { ArrowRightIcon, CheckIcon, FactoryIcon, GearIcon, GlobeIcon, PackageIcon, WrenchIcon } from '../components/Icons'
-import { COMPANY } from '../constants/company'
+import { BRANCHES, COMPANY } from '../constants/company'
 import { IMAGES } from '../constants/images'
 import { useLanguage } from '../locales/i18n'
+import { getLatestEvent, pickText } from '../services/eventCatalog'
+import { getLatestByCategoryName } from '../services/productCatalog'
 import './HomePage.css'
+
+const WHATSAPP_NUMBER = BRANCHES[0].whatsapp.display.replace(/\D/g, '')
+const whatsappLink = (text) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`
+
+function conditionText(t, condition) {
+  if (!condition) return ''
+  const key = `products.condition.${condition}`
+  const label = t(key)
+  return label === key ? condition : label
+}
 
 // Deterministic "spark" particles for the hero animation (left %, size px, duration s, delay s)
 const SPARKS = [
@@ -43,19 +57,6 @@ const SERVICE_KEYS = [
   },
 ]
 
-const NEW_ARRIVALS = [
-  {
-    src: 'https://www.yamazen.com/Portals/0/brother-speedio-s1000x1-machine-min.png?ver=w70tM-wxC_xh6PXsLCr_mw%3D%3D?format=webp',
-    name: 'Brother SPEEDIO S1000X1',
-    textKey: 'home.arrivals.speedio',
-  },
-  {
-    src: 'https://5.imimg.com/data5/SELLER/Default/2023/5/310057709/BO/EC/FR/13595935/114-500x500.jpg',
-    name: 'Brother TC-31B',
-    textKey: 'home.arrivals.tc31b',
-  },
-]
-
 const BRAND_LOGOS = [
   { src: '/product-branding-list/brother.jpg', alt: 'Brother' },
   { src: '/product-branding-list/Fanuc.png', alt: 'FANUC' },
@@ -65,7 +66,37 @@ const BRAND_LOGOS = [
 ]
 
 function HomePage() {
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
+  const [arrivals, setArrivals] = useState([])
+  const [machineCategory, setMachineCategory] = useState(null)
+  const [latestEvent, setLatestEvent] = useState(null)
+  const [openProduct, setOpenProduct] = useState(null)
+  const [openEvent, setOpenEvent] = useState(null)
+
+  useEffect(() => {
+    let cancelled = false
+
+    getLatestByCategoryName('Machine', 2)
+      .then(({ category, products }) => {
+        if (cancelled) return
+        setMachineCategory(category)
+        setArrivals(products)
+      })
+      .catch((err) => console.error('Could not load new arrivals', err))
+
+    getLatestEvent()
+      .then((event) => {
+        if (!cancelled) setLatestEvent(event)
+      })
+      .catch((err) => console.error('Could not load latest event', err))
+
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
+  const closeProduct = useCallback(() => setOpenProduct(null), [])
+  const closeEvent = useCallback(() => setOpenEvent(null), [])
 
   const services = SERVICE_KEYS.map(({ icon, key, image, to }) => ({
     icon,
@@ -83,6 +114,9 @@ function HomePage() {
     { icon: GlobeIcon, value: t('home.highlights.market'), label: t('home.highlights.marketLabel') },
     { icon: CheckIcon, value: t('home.highlights.onestop'), label: t('home.highlights.onestopLabel') },
   ]
+
+  const eventTitle = latestEvent ? pickText(latestEvent.title, lang) : ''
+  const eventSummary = latestEvent ? pickText(latestEvent.summary, lang) : ''
 
   return (
     <>
@@ -223,33 +257,92 @@ function HomePage() {
         </div>
       </section>
 
-      {/* ---------------- New arrivals ---------------- */}
-      <section className="section section--ice section--tight" id="new-arrival" aria-labelledby="new-arrival-title">
-        <div className="container">
-          <Reveal className="section-head">
-            <h2 id="new-arrival-title" className="section-title">
-              {t('home.newArrival')}
-            </h2>
-          </Reveal>
+      {/* ---------------- New arrivals (latest Machine products) ---------------- */}
+      {arrivals.length > 0 ? (
+        <section className="section section--ice section--tight" id="new-arrival" aria-labelledby="new-arrival-title">
+          <div className="container">
+            <Reveal className="section-head home-events__head">
+              <div>
+                <h2 id="new-arrival-title" className="section-title">
+                  {t('home.newArrival')}
+                </h2>
+              </div>
+              <Link
+                to={machineCategory ? `/products?category=${machineCategory.id}` : '/products'}
+                className="btn btn--outline"
+              >
+                {t('home.eventsViewAll')} <ArrowRightIcon size={18} />
+              </Link>
+            </Reveal>
 
-          <div className="new-arrivals">
-            {NEW_ARRIVALS.map(({ src, name, textKey }, i) => (
-              <Reveal key={name} delay={i * 120} className="new-arrival">
-                <div className="new-arrival__image">
-                  <img src={src} alt={name} loading="lazy" />
-                </div>
-                <div className="new-arrival__content">
-                  <h3>{name}</h3>
-                  <p>{t(textKey)}</p>
-                  <button type="button" className="btn btn--outline">
-                    {t('home.seeMore')} <ArrowRightIcon size={18} />
-                  </button>
-                </div>
-              </Reveal>
-            ))}
+            <div className={`new-arrivals${arrivals.length === 1 ? ' new-arrivals--single' : ''}`}>
+              {arrivals.map((product, i) => {
+                const cover = product.images[0]
+                return (
+                  <Reveal key={product.id} delay={i * 120} className="new-arrival">
+                    <div className="new-arrival__image">
+                      {cover ? (
+                        <img src={cover.url} alt={product.name} loading="lazy" decoding="async" />
+                      ) : (
+                        <div className="new-arrival__placeholder" aria-hidden="true">
+                          <GearIcon size={64} strokeWidth={1.1} />
+                        </div>
+                      )}
+                    </div>
+                    <div className="new-arrival__content">
+                      <h3>{product.name}</h3>
+                      {product.description ? <p>{product.description}</p> : null}
+                      <button type="button" className="btn btn--outline" onClick={() => setOpenProduct(product)}>
+                        {t('home.seeMore')} <ArrowRightIcon size={18} />
+                      </button>
+                    </div>
+                  </Reveal>
+                )
+              })}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
+
+      {/* ---------------- Latest event ---------------- */}
+      {latestEvent ? (
+        <section className="section section--panel section--tight" id="home-events" aria-labelledby="home-events-title">
+          <div className="container">
+            <Reveal className="section-head home-events__head">
+              <div>
+                <h2 id="home-events-title" className="section-title">
+                  {t('home.eventsTitle')}
+                </h2>
+                <p className="section-lead">{t('home.eventsLead')}</p>
+              </div>
+              <Link to="/event" className="btn btn--outline">
+                {t('home.eventsViewAll')} <ArrowRightIcon size={18} />
+              </Link>
+            </Reveal>
+
+            <Reveal delay={100} className="home-event">
+              <button type="button" className="home-event__main" onClick={() => setOpenEvent(latestEvent)}>
+                <div className="home-event__media">
+                  {latestEvent.images[0] ? (
+                    <img src={latestEvent.images[0].url} alt={eventTitle} loading="lazy" decoding="async" />
+                  ) : (
+                    <div className="home-event__placeholder" aria-hidden="true">
+                      <GearIcon size={56} strokeWidth={1.1} />
+                    </div>
+                  )}
+                </div>
+                <div className="home-event__body">
+                  <h3>{eventTitle}</h3>
+                  {eventSummary ? <p>{eventSummary}</p> : null}
+                  <span className="btn btn--outline btn--sm home-event__cta">
+                    {t('products.viewDetails')} <ArrowRightIcon size={16} />
+                  </span>
+                </div>
+              </button>
+            </Reveal>
+          </div>
+        </section>
+      ) : null}
 
       {/* ---------------- Brand logos ---------------- */}
       <section className="brand-marquee" aria-label={t('home.brandsLabel')}>
@@ -281,6 +374,30 @@ function HomePage() {
           </Link>
         </Reveal>
       </section>
+
+      {openProduct ? (
+        <DetailDialog
+          title={openProduct.name}
+          description={openProduct.description}
+          images={openProduct.images}
+          tags={[
+            { label: machineCategory?.name },
+            { label: conditionText(t, openProduct.condition), dark: true },
+          ]}
+          enquiryLink={whatsappLink(t('products.enquireMessage', { name: openProduct.name }))}
+          onClose={closeProduct}
+        />
+      ) : null}
+
+      {openEvent ? (
+        <DetailDialog
+          title={pickText(openEvent.title, lang)}
+          summary={pickText(openEvent.summary, lang)}
+          description={pickText(openEvent.description, lang)}
+          images={openEvent.images}
+          onClose={closeEvent}
+        />
+      ) : null}
     </>
   )
 }

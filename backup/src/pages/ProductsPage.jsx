@@ -1,78 +1,82 @@
-import { useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import Reveal from '../components/Reveal'
-import {
-  ArrowRightIcon,
-  CheckIcon,
-  FactoryIcon,
-  GearIcon,
-  PackageIcon,
-  SearchIcon,
-  WhatsAppIcon,
-} from '../components/Icons'
+import DetailDialog from '../components/DetailDialog'
+import { ArrowRightIcon, GearIcon, PackageIcon, SearchIcon, WhatsAppIcon } from '../components/Icons'
 import { BRANCHES } from '../constants/company'
 import { IMAGES } from '../constants/images'
-import { PRODUCT_CATEGORIES, PRODUCTS } from '../constants/products'
+import { getCategories, getFeed, getMoreFeed, peekCategories, peekFeed } from '../services/productCatalog'
 import { useLanguage } from '../locales/i18n'
 import './ProductsPage.css'
 
+// NOTE: src/constants/products.js (the old sample catalogue) is intentionally no longer used here.
+// Products and categories now come from Firestore (managed in /admin).
+
 const ALL = 'all'
+const SKELETON_COUNT = 6
+const NO_ITEMS = []
 const WHATSAPP_NUMBER = BRANCHES[0].whatsapp.display.replace(/\D/g, '')
 
 const whatsappLink = (text) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`
 
-function ProductPlaceholder({ category, label }) {
-  const PlaceholderIcon = category === 'machine' ? FactoryIcon : category === 'spare-parts' ? PackageIcon : GearIcon
-  return (
-    <div className="product-card__placeholder" aria-hidden="true">
-      <PlaceholderIcon size={64} strokeWidth={1.1} />
-      <span>{label}</span>
-    </div>
-  )
+// The admin types the condition freely; fall back to the raw text when there is no translation.
+function conditionText(t, condition) {
+  if (!condition) return ''
+  const key = `products.condition.${condition}`
+  const label = t(key)
+  return label === key ? condition : label
 }
 
-function ProductCard({ product, index }) {
+function ProductCard({ product, index, categoryLabel, onOpen }) {
   const { t } = useLanguage()
-  const { name, category, image, condition, id, summary, highlights } = product
-  const categoryLabel = t(`products.categories.${category}.label`)
-  const conditionLabel = condition ? t(`products.condition.${condition}`) : ''
-  const message = t('products.enquireMessage', { name })
+  const { name, condition, description, images } = product
+  const cover = images[0] // The list only shows the first photo; the others load in the detail view.
+  const conditionLabel = conditionText(t, condition)
 
   return (
-    <Reveal delay={(index % 3) * 100} as="article" className="product-card">
+    <Reveal delay={(index % 3) * 100} as="article" className="product-card" onClick={() => onOpen(product)}>
       <div className="product-card__media">
-        {image ? (
-          <img src={image} alt={name} loading="lazy" />
+        {cover ? (
+          <img src={cover.url} alt={name} loading="lazy" decoding="async" />
         ) : (
-          <ProductPlaceholder category={category} label={t('products.photoSoon')} />
+          <div className="product-card__placeholder" aria-hidden="true">
+            <GearIcon size={64} strokeWidth={1.1} />
+            <span>{t('products.photoSoon')}</span>
+          </div>
         )}
-        <span className="product-card__category">{categoryLabel}</span>
-        {condition && <span className="product-card__condition">{conditionLabel}</span>}
+        {categoryLabel ? <span className="product-card__category">{categoryLabel}</span> : null}
+        {conditionLabel ? <span className="product-card__condition">{conditionLabel}</span> : null}
       </div>
 
       <div className="product-card__body">
         <h3>{name}</h3>
-        <p className="product-card__summary">{summary}</p>
+        {description ? <p className="product-card__summary">{description}</p> : null}
 
-        <ul className="product-card__highlights">
-          {highlights.map((itemText) => (
-            <li key={itemText}>
-              <CheckIcon size={15} />
-              {itemText}
-            </li>
-          ))}
-        </ul>
-
-        <a
+        <button
+          type="button"
           className="btn btn--outline btn--sm product-card__cta"
-          href={whatsappLink(message)}
-          target="_blank"
-          rel="noopener noreferrer"
+          onClick={(event) => {
+            event.stopPropagation()
+            onOpen(product)
+          }}
         >
-          <WhatsAppIcon size={18} /> {t('products.enquire')}
-        </a>
+          {t('products.viewDetails')} <ArrowRightIcon size={16} />
+        </button>
       </div>
     </Reveal>
+  )
+}
+
+function ProductCardSkeleton() {
+  return (
+    <div className="product-card product-card--skeleton" aria-hidden="true">
+      <div className="product-card__media" />
+      <div className="product-card__body">
+        <span className="skeleton-line skeleton-line--title" />
+        <span className="skeleton-line" />
+        <span className="skeleton-line skeleton-line--short" />
+      </div>
+    </div>
   )
 }
 
@@ -80,57 +84,150 @@ function ProductsPage() {
   const { t } = useLanguage()
   const [searchParams, setSearchParams] = useSearchParams()
   const [query, setQuery] = useState('')
+  const [openProduct, setOpenProduct] = useState(null)
+  const [attempt, setAttempt] = useState(0) // bump to retry after an error
 
-  // The active category lives in the URL (/products?category=machine) so links can be shared / bookmarked.
+  // Start from the cache when it has fresh data, so a return visit paints instantly with no Firestore read.
+  const [categories, setCategories] = useState(() => peekCategories() ?? [])
+  const [categoriesReady, setCategoriesReady] = useState(() => peekCategories() !== null)
+  const [categoriesError, setCategoriesError] = useState(false)
+
+  // `key` records which category the products belong to, so a stale list is never shown.
+  const [feed, setFeed] = useState({ key: '', items: [], hasMore: false })
+  const [feedError, setFeedError] = useState('') // key of the feed that failed to load
+  const [moreError, setMoreError] = useState('') // key of the feed whose next page failed
+  const [loadingMore, setLoadingMore] = useState(false)
+
+  const sentinelRef = useRef(null)
+  const activeKeyRef = useRef('')
+
+  /* ---------------- Categories ---------------- */
+  useEffect(() => {
+    let cancelled = false
+    getCategories()
+      .then((list) => {
+        if (cancelled) return
+        setCategories(list)
+        setCategoriesError(false)
+        setCategoriesReady(true)
+      })
+      .catch((err) => {
+        console.error('Could not load product categories', err)
+        if (cancelled) return
+        setCategoriesError(true)
+        setCategoriesReady(true)
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [attempt])
+
+  // The active category lives in the URL (/products?category=<id>) so links can be shared / bookmarked.
   const requested = searchParams.get('category')
-  const active = PRODUCT_CATEGORIES.some((c) => c.id === requested) ? requested : ALL
+  const active = categories.some((c) => c.id === requested) ? requested : ALL
+  const categoryId = active === ALL ? '' : active
+  const feedKey = active
 
   const selectCategory = (id) => {
     setSearchParams(id === ALL ? {} : { category: id }, { replace: true })
   }
 
-  const counts = useMemo(() => {
-    const result = { [ALL]: PRODUCTS.length }
-    PRODUCT_CATEGORIES.forEach((c) => {
-      result[c.id] = PRODUCTS.filter((p) => p.category === c.id).length
-    })
-    return result
-  }, [])
+  const storeIsEmpty = categoriesReady && !categoriesError && categories.length === 0
+  const totalCount = useMemo(() => categories.reduce((sum, c) => sum + c.count, 0), [categories])
+  const categoryNames = useMemo(() => Object.fromEntries(categories.map((c) => [c.id, c.name])), [categories])
+  const activeCategory = categories.find((c) => c.id === active)
 
-  const localizedProducts = useMemo(
-    () =>
-      PRODUCTS.map((product) => {
-        const item = t(`products.items.${product.id}`)
-        const translated = item && typeof item === 'object' ? item : null
-        return {
-          ...product,
-          summary: translated?.summary ?? product.summary,
-          highlights: Array.isArray(translated?.highlights) ? translated.highlights : product.highlights,
-          categoryLabel: t(`products.categories.${product.category}.label`),
-        }
-      }),
-    [t],
-  )
+  /* ---------------- First page of the active category ---------------- */
+  useEffect(() => {
+    activeKeyRef.current = feedKey
+    if (!categoriesReady || categoriesError || storeIsEmpty) return undefined
 
+    let cancelled = false
+    getFeed(categoryId)
+      .then((result) => {
+        if (cancelled) return
+        setFeed({ key: feedKey, ...result })
+        setFeedError('')
+        setMoreError('')
+      })
+      .catch((err) => {
+        // Firestore reports a missing composite index here, with a link to create it, in the console.
+        console.error('Could not load products', err)
+        if (!cancelled) setFeedError(feedKey)
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [categoriesReady, categoriesError, storeIsEmpty, categoryId, feedKey, attempt])
+
+  // The products to show: what has loaded, or - while the first page is still on its way - whatever is cached.
+  const current = useMemo(() => {
+    if (feed.key === feedKey) return feed
+    if (!categoriesReady || categoriesError) return null
+    const cached = peekFeed(categoryId)
+    return cached ? { key: feedKey, ...cached } : null
+  }, [feed, feedKey, categoriesReady, categoriesError, categoryId])
+  const loaded = current !== null
+  const items = current ? current.items : NO_ITEMS
+  const hasMore = current ? current.hasMore : false
+
+  /* ---------------- Infinite scroll: the next 20 ---------------- */
+  const loadMore = useCallback(async () => {
+    if (!current || !current.hasMore || loadingMore) return
+
+    setLoadingMore(true)
+    try {
+      const next = await getMoreFeed(categoryId, current)
+      // Ignore the result if the visitor has already switched to another category.
+      if (activeKeyRef.current === feedKey) setFeed({ key: feedKey, ...next })
+    } catch (err) {
+      console.error('Could not load more products', err)
+      if (activeKeyRef.current === feedKey) setMoreError(feedKey)
+    } finally {
+      setLoadingMore(false)
+    }
+  }, [current, loadingMore, categoryId, feedKey])
+
+  const canAutoLoad = loaded && hasMore && !loadingMore && moreError !== feedKey
+
+  useEffect(() => {
+    const el = sentinelRef.current
+    if (!el || !canAutoLoad) return undefined
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) loadMore()
+      },
+      { rootMargin: '600px 0px' },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [canAutoLoad, loadMore])
+
+  /* ---------------- Search (over the products loaded so far) ---------------- */
   const visibleProducts = useMemo(() => {
     const term = query.trim().toLowerCase()
-    return localizedProducts.filter((p) => {
-      if (active !== ALL && p.category !== active) return false
-      if (!term) return true
-      return [p.name, p.summary, p.categoryLabel, ...p.highlights].join(' ').toLowerCase().includes(term)
-    })
-  }, [active, query, localizedProducts])
+    if (!term) return items
+    return items.filter((p) =>
+      [p.name, p.description, categoryNames[p.categoryId]].join(' ').toLowerCase().includes(term),
+    )
+  }, [items, query, categoryNames])
 
-  const heading = active === ALL ? t('products.allProducts') : t(`products.categories.${active}.label`)
-  const blurb = active === ALL ? t('products.allBlurb') : t(`products.categories.${active}.blurb`)
+  const closeDetail = useCallback(() => setOpenProduct(null), [])
+
+  const failed = categoriesError || feedError === feedKey
+  const loadingFirstPage = !failed && !storeIsEmpty && (!categoriesReady || !loaded)
+
+  const heading = active === ALL ? t('products.allProducts') : activeCategory?.name
+  const subheading =
+    active === ALL ? t('products.allBlurb') : t('products.itemCount', { count: activeCategory?.count ?? 0 })
 
   const categoryItems = [
-    { id: ALL, label: t('products.allProducts') },
-    ...PRODUCT_CATEGORIES.map((c) => ({
-      id: c.id,
-      label: t(`products.categories.${c.id}.label`),
-    })),
+    { id: ALL, label: t('products.allProducts'), count: categoriesReady ? totalCount : null },
+    ...categories.map((c) => ({ id: c.id, label: c.name, count: c.count })),
   ]
+
+  const emptyAskItem = query || (active === ALL ? t('products.defaultItem') : activeCategory?.name)
 
   return (
     <>
@@ -159,7 +256,7 @@ function ProductsPage() {
               <span>{t('products.chooseCategory')}</span>
             </div>
             <ul>
-              {categoryItems.map(({ id, label }) => (
+              {categoryItems.map(({ id, label, count }) => (
                 <li key={id}>
                   <button
                     type="button"
@@ -168,7 +265,7 @@ function ProductsPage() {
                     onClick={() => selectCategory(id)}
                   >
                     <span>{label}</span>
-                    <small>{counts[id]}</small>
+                    {count != null ? <small>{count}</small> : null}
                   </button>
                 </li>
               ))}
@@ -193,7 +290,7 @@ function ProductsPage() {
             <div className="products__toolbar">
               <div>
                 <h2 className="products__title">{heading}</h2>
-                <p>{blurb}</p>
+                <p>{subheading}</p>
               </div>
               <label className="products__search">
                 <SearchIcon size={18} />
@@ -207,13 +304,37 @@ function ProductsPage() {
               </label>
             </div>
 
-            {visibleProducts.length > 0 ? (
-              <div className="products__grid">
-                {visibleProducts.map((product, i) => (
-                  <ProductCard key={product.id} product={product} index={i} />
+            {failed ? (
+              <div className="products__empty">
+                <span className="products__empty-icon">
+                  <PackageIcon size={34} />
+                </span>
+                <h3>{t('products.loadErrorTitle')}</h3>
+                <p>{t('products.loadErrorText')}</p>
+                <button type="button" className="btn btn--primary btn--sm" onClick={() => setAttempt((n) => n + 1)}>
+                  {t('products.retry')}
+                </button>
+              </div>
+            ) : loadingFirstPage ? (
+              <div className="products__grid" aria-busy="true">
+                {Array.from({ length: SKELETON_COUNT }, (_, i) => (
+                  <ProductCardSkeleton key={i} />
                 ))}
               </div>
-            ) : (
+            ) : visibleProducts.length > 0 ? (
+              <div className="products__grid">
+                {visibleProducts.map((product, i) => (
+                  <ProductCard
+                    key={product.id}
+                    product={product}
+                    index={i}
+                    categoryLabel={categoryNames[product.categoryId]}
+                    onOpen={setOpenProduct}
+                  />
+                ))}
+              </div>
+            ) : !hasMore ? (
+              // Nothing to show and nothing more to load.
               <div className="products__empty">
                 <span className="products__empty-icon">
                   <PackageIcon size={34} />
@@ -222,18 +343,37 @@ function ProductsPage() {
                 <p>{query ? t('products.emptySearchText') : t('products.emptyStockText')}</p>
                 <a
                   className="btn btn--primary btn--sm"
-                  href={whatsappLink(
-                    t('products.askMessage', {
-                      item: query || (active === ALL ? t('products.defaultItem') : t(`products.categories.${active}.label`)),
-                    }),
-                  )}
+                  href={whatsappLink(t('products.askMessage', { item: emptyAskItem }))}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <WhatsAppIcon size={18} /> {t('products.askWhatsApp')}
                 </a>
               </div>
-            )}
+            ) : null}
+
+            {/* Scroll trigger: when it nears the viewport, the next 20 products are loaded. */}
+            {loaded && hasMore && !failed ? (
+              <div className="products__more">
+                <div ref={sentinelRef} className="products__sentinel" aria-hidden="true" />
+                {moreError === feedKey ? (
+                  <button
+                    type="button"
+                    className="btn btn--outline btn--sm"
+                    onClick={() => {
+                      setMoreError('')
+                      loadMore()
+                    }}
+                  >
+                    {t('products.retry')}
+                  </button>
+                ) : (
+                  <span className="products__more-status" role="status">
+                    <span className="products__spinner" aria-hidden="true" /> {t('products.loadingMore')}
+                  </span>
+                )}
+              </div>
+            ) : null}
           </div>
         </div>
       </section>
@@ -250,6 +390,20 @@ function ProductsPage() {
           </Link>
         </Reveal>
       </section>
+
+      {openProduct ? (
+        <DetailDialog
+          title={openProduct.name}
+          description={openProduct.description}
+          images={openProduct.images}
+          tags={[
+            { label: categoryNames[openProduct.categoryId] },
+            { label: conditionText(t, openProduct.condition), dark: true },
+          ]}
+          enquiryLink={whatsappLink(t('products.enquireMessage', { name: openProduct.name }))}
+          onClose={closeDetail}
+        />
+      ) : null}
     </>
   )
 }

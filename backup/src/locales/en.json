@@ -84,6 +84,9 @@
     "aboutCta": "Learn More About Us",
     "newArrival": "New Arrival",
     "seeMore": "See More Details",
+    "eventsTitle": "Events",
+    "eventsLead": "The latest from Able Engineering.",
+    "eventsViewAll": "View all",
     "arrivals": {
       "speedio": "A high-speed compact machining centre built for precision and productivity. Featuring a 21-tool turret and advanced digital control, this Brother SPEEDIO is ready to support demanding production work.",
       "tc31b": "A reliable Brother vertical machining centre with a clear work view, practical control panel and proven build quality — a solid choice for shops looking for dependable CNC capacity."
@@ -112,9 +115,9 @@
     "vmCaption": "Reliable solutions for a more productive tomorrow",
     "engineersAlt": "Engineers working with CNC machinery",
     "vision": "Our Vision",
-    "visionText": "To be a trusted CNC engineering partner.",
+    "visionText": "To become Malaysia’s preferred partner in CNC machinery and engineering support, helping manufacturers achieve reliable, efficient and competitive production.",
     "mission": "Our Mission",
-    "missionText": "To keep our customers moving forward.",
+    "missionText": "To strengthen manufacturing capabilities through dependable CNC machinery, quality spare parts and expert repair and refurbishment services. We are committed to maximising equipment performance, minimising production downtime and creating lasting value through technical excellence, timely delivery, responsive support and trusted partnerships.",
     "experience": "Our Experience",
     "experienceTitle": "Built on Experience.",
     "experienceTitleLine2": "Driven by Technical Expertise.",
@@ -134,6 +137,18 @@
     "regionTitle": "Expanding Our Regional Support",
     "regionText": "Continuing to support customers across {regions}.",
     "backHome": "Back to Home"
+  },
+  "events": {
+    "eyebrow": "Events",
+    "title": "Our Events",
+    "lead": "Highlights, activities and updates from Able Engineering.",
+    "emptyTitle": "No events yet",
+    "emptyText": "We have nothing to show right now. Please check back soon, or get in touch with us.",
+    "contact": "Contact Us",
+    "loadingMore": "Loading more...",
+    "loadErrorTitle": "We couldn't load the events",
+    "loadErrorText": "Please check your connection and try again.",
+    "retry": "Try again"
   },
   "products": {
     "eyebrow": "Our Products",
@@ -162,6 +177,17 @@
     "ctaText": "Our team can source machines and parts on request. Send us the model and we will get back to you.",
     "ctaButton": "Contact Us",
     "categoriesLabel": "Product categories",
+    "viewDetails": "View details",
+    "close": "Close",
+    "descriptionLabel": "Description",
+    "photoLabel": "Photo {n} of {total}",
+    "previousPhoto": "Previous photo",
+    "nextPhoto": "Next photo",
+    "itemCount": "{count} items",
+    "loadingMore": "Loading more...",
+    "loadErrorTitle": "We couldn't load the products",
+    "loadErrorText": "Please check your connection and try again.",
+    "retry": "Try again",
     "categories": {
       "machine": { "label": "Machine", "blurb": "Used CNC machines, mainly Brother machining centres." },
       "ball-screw": { "label": "Ball Screw & Cover", "blurb": "Ball screw axis sets and covers for Brother machines." },
@@ -172,7 +198,8 @@
     },
     "condition": {
       "Used": "Used",
-      "Parts": "Parts"
+      "Parts": "Parts",
+      "New": "New"
     },
     "items": {
       "brother-speedio-s1000x1": {
