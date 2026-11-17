@@ -54,24 +54,13 @@
 .footer-brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
   margin-bottom: 1rem;
-  font-size: 1.1rem;
-  letter-spacing: 0.08em;
-  color: #fff !important;
 }
 
-.footer-brand strong {
-  font-weight: 800;
-}
-
-.footer-brand__mark {
-  display: grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 9px;
-  background: var(--blue-500);
+.footer-brand__logo {
+  display: block;
+  height: 56px;
+  width: auto;
 }
 
 .site-footer__bottom {
