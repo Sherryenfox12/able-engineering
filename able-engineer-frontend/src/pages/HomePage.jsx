@@ -76,7 +76,7 @@ function HomePage() {
   useEffect(() => {
     let cancelled = false
 
-    getLatestByCategoryName('Machine', 2)
+    getLatestByCategoryName('machine', 3)
       .then(({ category, products }) => {
         if (cancelled) return
         setMachineCategory(category)

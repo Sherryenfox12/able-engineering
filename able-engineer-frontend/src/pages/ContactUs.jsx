@@ -46,26 +46,30 @@ function ContactUs() {
                       </span>
                       <div>
                         <span className="contact-list__label">{t('contact.email')}</span>
-                        <span className="contact-list__value">{branch.email}</span>
-                      </div>
-                    </li>
-
-                    <li>
-                      <span className="contact-list__icon contact-list__icon--whatsapp">
-                        <WhatsAppIcon size={22} />
-                      </span>
-                      <div>
-                        <span className="contact-list__label">{t('contact.whatsapp')}</span>
-                        <a
-                          className="contact-list__value"
-                          href={branch.whatsapp.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {branch.whatsapp.display}
+                        <a className="contact-list__value" href={`mailto:${branch.email}`}>
+                          {branch.email}
                         </a>
                       </div>
                     </li>
+
+                    {branch.whatsapp && (
+                      <li>
+                        <span className="contact-list__icon contact-list__icon--whatsapp">
+                          <WhatsAppIcon size={22} />
+                        </span>
+                        <div>
+                          <span className="contact-list__label">{t('contact.whatsapp')}</span>
+                          <a
+                            className="contact-list__value"
+                            href={branch.whatsapp.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {branch.whatsapp.display}
+                          </a>
+                        </div>
+                      </li>
+                    )}
 
                     <li>
                       <span className="contact-list__icon">
@@ -90,14 +94,16 @@ function ContactUs() {
                     </li>
                   </ul>
 
-                  <a
-                    className="btn btn--primary btn--whatsapp"
-                    href={branch.whatsapp.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <WhatsAppIcon size={20} /> {t('contact.chatWhatsApp')}
-                  </a>
+                  {branch.whatsapp && (
+                    <a
+                      className="btn btn--primary btn--whatsapp"
+                      href={branch.whatsapp.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <WhatsAppIcon size={20} /> {t('contact.chatWhatsApp')}
+                    </a>
+                  )}
                 </Reveal>
 
                 <Reveal delay={120} className="branch__map">

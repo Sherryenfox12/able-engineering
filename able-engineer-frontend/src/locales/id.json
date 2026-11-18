@@ -352,7 +352,8 @@
     "chatWhatsApp": "Chat di WhatsApp",
     "mapTitle": "Peta lokasi {name}",
     "branches": {
-      "Penang Branch": "Cabang Penang"
+      "Penang Branch": "Cabang Penang",
+      "Thailand Branch": "Cabang Thailand"
     }
   }
 }

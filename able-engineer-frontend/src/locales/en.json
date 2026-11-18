@@ -352,7 +352,8 @@
     "chatWhatsApp": "Chat on WhatsApp",
     "mapTitle": "{name} location map",
     "branches": {
-      "Penang Branch": "Penang Branch"
+      "Penang Branch": "Penang Branch",
+      "Thailand Branch": "Thailand Branch"
     }
   }
 }

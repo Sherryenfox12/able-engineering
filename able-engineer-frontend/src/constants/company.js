@@ -10,13 +10,24 @@ export const COMPANY = {
 export const BRANCHES = [
   {
     name: 'Penang Branch',
-    email: 'ableengineering.jeswin@gmail.com',
+    email: 'ableengineering.info@gmail.com',
     whatsapp: {
       display: '+60 11-5894 9811',
       url: 'https://api.whatsapp.com/send/?phone=601158949811&text&type=phone_number&app_absent=0',
     },
     phone: { display: '+604-358 0571', tel: '+6043580571' },
     warehouse: 'No.3, Lorong Industri Sungai Lokan 2A, Taman Industri Sungai Lokan, 13800 Butterworth, Malaysia.',
+  },
+  {
+    name: 'Thailand Branch',
+    email: 'cs2@alliancemachinery.co.th',
+    whatsapp: {
+      display: '+66-877194830',
+      url: 'https://api.whatsapp.com/send/?phone=66877194830&text&type=phone_number&app_absent=0',
+    },
+    phone: { display: '+66-21475156', tel: '+6621475156' },
+    warehouse:
+      '19/38 Moo 13 Bungkamphot Sub-District, Lamlookka District, Pathumthani 12150 Thailand',
   },
 ]
 

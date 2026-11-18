@@ -141,17 +141,20 @@ async function fetchAllPage(cursor) {
 }
 
 /**
- * Newest products in a category by name (e.g. "Machine"), for the home page.
- * Reuses the same category-list cache as the Products page - no extra Firestore read
- * if that category was already loaded. Resolves to { category, products }.
+ * Newest products whose category name contains `name` (case-insensitive),
+ * e.g. "machine" matches "Machine", "machine", "Machine for rent".
+ * Resolves to { category, products } — category is the sole match when only one
+ * category matched (for the "view all" link), otherwise null.
  */
-export async function getLatestByCategoryName(name, count = 2) {
+export async function getLatestByCategoryName(name, count = 3) {
+  const needle = String(name).toLowerCase()
   const categories = await getCategories()
-  const category = categories.find((c) => String(c.name).toLowerCase() === String(name).toLowerCase())
-  if (!category) return { category: null, products: [] }
+  const matched = categories.filter((c) => String(c.name).toLowerCase().includes(needle))
+  if (matched.length === 0) return { category: null, products: [] }
 
-  const products = (await loadCategoryList(category.id)).slice(0, count)
-  return { category, products }
+  const lists = await Promise.all(matched.map((c) => loadCategoryList(c.id)))
+  const products = sortNewestFirst(lists.flat()).slice(0, count)
+  return { category: matched.length === 1 ? matched[0] : null, products }
 }
 
 /**

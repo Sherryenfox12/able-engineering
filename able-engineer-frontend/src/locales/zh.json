@@ -352,7 +352,8 @@
     "chatWhatsApp": "通过 WhatsApp 聊天",
     "mapTitle": "{name} 位置地图",
     "branches": {
-      "Penang Branch": "槟城分公司"
+      "Penang Branch": "槟城分公司",
+      "Thailand Branch": "泰国分公司"
     }
   }
 }

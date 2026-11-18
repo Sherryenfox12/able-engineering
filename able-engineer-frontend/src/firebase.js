@@ -3,12 +3,12 @@ import { getFirestore } from 'firebase/firestore'
 import { getStorage } from 'firebase/storage'
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyA7K2JRQwXJjZmLVPSQn5OhrZnERu5uRZQ',
-  authDomain: 'able-engineer.firebaseapp.com',
-  projectId: 'able-engineer',
-  storageBucket: 'able-engineer.firebasestorage.app',
-  messagingSenderId: '309707962860',
-  appId: '1:309707962860:web:98aae41c158136dde128c9',
+  apiKey: 'AIzaSyBy1gxZIBGYmDrxmA5lKl3HLAanGTVXOic',
+  authDomain: 'able-engineer-c5b67.firebaseapp.com',
+  projectId: 'able-engineer-c5b67',
+  storageBucket: 'able-engineer-c5b67.firebasestorage.app',
+  messagingSenderId: '397004657260',
+  appId: '1:397004657260:web:391e876fdc02c9dfe67e49',
 }
 
 const app = initializeApp(firebaseConfig)
