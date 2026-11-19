@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import Reveal from '../components/Reveal'
 import { ArrowRightIcon, FlagIcon, GearIcon, GlobeIcon, CheckIcon, TargetIcon } from '../components/Icons'
 import { COMPANY } from '../constants/company'
-import { IMAGES } from '../constants/images'
+import { ABOUT_GALLERY, FACTORY } from '../constants/images'
 import { useLanguage } from '../locales/i18n'
 import './AboutUs.css'
 
@@ -21,7 +21,7 @@ function AboutUs() {
     <>
       {/* ---------------- Page banner ---------------- */}
       <section className="page-banner">
-        <div className="page-banner__bg" style={{ backgroundImage: `url(${IMAGES.industrial})` }} />
+        <div className="page-banner__bg" style={{ backgroundImage: `url(${FACTORY.outside})` }} />
         <div className="container page-banner__inner">
           <span className="page-banner__eyebrow">{t('about.eyebrow')}</span>
           <h1>{t('about.title')}</h1>
@@ -55,7 +55,7 @@ function AboutUs() {
           </Reveal>
 
           <Reveal delay={120} className="split__image">
-            <img src={IMAGES.factory} alt={t('about.factoryAlt')} loading="lazy" />
+            <img src={FACTORY.inside} alt={t('about.factoryAlt')} loading="lazy" />
           </Reveal>
         </div>
       </section>
@@ -70,7 +70,7 @@ function AboutUs() {
 
           <div className="vm">
             <Reveal className="vm__image">
-              <img src={IMAGES.machinery} alt={t('about.engineersAlt')} loading="lazy" />
+              <img src={FACTORY.machine} alt={t('about.engineersAlt')} loading="lazy" />
               <div className="vm__caption">
                 <span>{t('about.vmCaption')}</span>
               </div>
@@ -100,7 +100,7 @@ function AboutUs() {
       <section className="section section--ice">
         <div className="container split split--reverse">
           <Reveal className="split__image">
-            <img src={IMAGES.technician} alt={t('about.techAlt')} loading="lazy" />
+            <img src={FACTORY.worker} alt={t('about.techAlt')} loading="lazy" />
           </Reveal>
 
           <Reveal delay={120} className="split__content">
@@ -133,6 +133,27 @@ function AboutUs() {
               </div>
             </Reveal>
           ))}
+        </div>
+      </section>
+
+      {/* ---------------- Facility gallery ---------------- */}
+      <section className="section section--panel" aria-labelledby="about-gallery-title">
+        <div className="container">
+          <Reveal className="section-head">
+            <span className="eyebrow">{t('about.galleryEyebrow')}</span>
+            <h2 id="about-gallery-title" className="section-title">
+              {t('about.galleryTitle')}
+            </h2>
+            <p className="section-lead">{t('about.galleryLead')}</p>
+          </Reveal>
+
+          <div className="about-gallery">
+            {ABOUT_GALLERY.map((src, i) => (
+              <Reveal key={src} delay={(i % 3) * 80} className="about-gallery__item">
+                <img src={src} alt={t('about.galleryAlt', { n: i + 1 })} loading="lazy" decoding="async" />
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 

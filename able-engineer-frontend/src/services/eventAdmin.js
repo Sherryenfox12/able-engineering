@@ -14,18 +14,17 @@ export const EVENT_LANGUAGES = [
 ]
 
 export const EMPTY_EVENT_TEXTS = {
-  en: { title: '', summary: '', description: '' },
-  zh: { title: '', summary: '', description: '' },
-  id: { title: '', summary: '', description: '' },
+  en: { title: '', description: '' },
+  zh: { title: '', description: '' },
+  id: { title: '', description: '' },
 }
 
-/** The admin editor works with { en: { title, summary, description }, zh: {...}, id: {...} }. */
+/** The admin editor works with { en: { title, description }, zh: {...}, id: {...} }. */
 export function eventToTexts(event) {
   const result = {}
   EVENT_LANGUAGES.forEach(({ code }) => {
     result[code] = {
       title: event?.title?.[code] ?? '',
-      summary: event?.summary?.[code] ?? '',
       description: event?.description?.[code] ?? '',
     }
   })
@@ -95,7 +94,6 @@ export async function saveEvent({ eventId, existing, texts, photos, onPhotoStatu
 
     const fields = {
       title,
-      summary: clean('summary'),
       description: clean('description'),
       images,
       updatedAt: serverTimestamp(),

@@ -45,6 +45,13 @@
     "ctaAbout": "关于我们",
     "badgeYears": "年",
     "badgeIndustry": "行业经验",
+    "brandsEyebrow": "品牌专长",
+    "brandsTitleBefore": "专注三大品牌",
+    "brandsTitleHighlight": "Brother、FANUC 与 HOWA",
+    "brandsLead": "深耕三大主流 CNC 品牌——覆盖机床、备件、维护维修与技术支持。",
+    "brandsListLabel": "我们专注的主要品牌",
+    "heroSlideLabel": "主视觉第 {n} 张，共 {total} 张",
+    "heroDotsLabel": "主视觉轮播",
     "whatWeDo": "我们的服务",
     "servicesTitle": "机床、备件与维护，一站式解决",
     "servicesLead": "请选择您需要的服务。每项服务都有详细说明，并可直接联系我们。",
@@ -52,22 +59,22 @@
       "machines": {
         "title": "二手 CNC 机床",
         "tag": "正在寻找机床？",
-        "text": "优质二手 CNC 机床，重点供应兄弟（Brother）加工中心。",
-        "points": ["兄弟加工中心", "检测合格、可直接投产", "可按需代寻"],
+        "text": "我们收购并销售 CNC 机床，并在转售前进行翻新。",
+        "points": ["收购二手 CNC 机床", "销售 CNC 机床", "售前翻新整备"],
         "cta": "查看现有机床"
       },
       "parts": {
         "title": "CNC 备件",
         "tag": "需要备件？",
         "text": "正品及兼容 CNC 备件，放心供应。",
-        "points": ["主轴、滚珠丝杠与直线导轨", "伺服电机与驱动器", "换刀机构与控制板"],
+        "points": ["主轴、滚珠丝杠与直线导轨", "伺服电机与驱动器", "换刀机构与控制板", "亦接受备件以旧换新"],
         "cta": "咨询备件"
       },
       "repair": {
         "title": "维护与维修",
         "tag": "机床停机了？",
         "text": "现场支持，减少停机时间，提升生产效率。",
-        "points": ["预防性维护", "维修与机床大修", "自动化升级"],
+        "points": ["预防性维护", "维修与机床大修", "自动化升级", "按客户需求改装机床"],
         "cta": "查看维修与服务"
       }
     },
@@ -133,6 +140,10 @@
       "onestop": "一站式",
       "onestopLabel": "CNC 解决方案"
     },
+    "galleryEyebrow": "我们的厂房",
+    "galleryTitle": "走进 Able Engineering",
+    "galleryLead": "带您了解我们的车间、机床与幕后团队。",
+    "galleryAlt": "Able Engineering 厂房照片 {n}",
     "journey": "我们的历程",
     "regionTitle": "拓展区域支持网络",
     "regionText": "持续服务 {regions} 的客户。",
@@ -293,7 +304,7 @@
       "换刀机构",
       "控制板",
       "自动化升级",
-      "兄弟 CNC 支持"
+      "CNC 支持"
     ],
     "techAlt": "技术员检修 CNC 设备",
     "offerEyebrow": "我们提供",
@@ -334,6 +345,7 @@
       "务实、面向车间的支持",
       "维修同时可供应备件",
       "覆盖主要 CNC 部件的经验",
+      "二手 CNC 机床回购、以旧换新与代寻支持",
       "覆盖 {regions} 的区域服务"
     ],
     "ctaTitle": "机床停机或到了保养期？",

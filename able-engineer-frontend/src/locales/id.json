@@ -45,6 +45,13 @@
     "ctaAbout": "Tentang Kami",
     "badgeYears": "Tahun",
     "badgeIndustry": "Pengalaman Industri",
+    "brandsEyebrow": "Spesialis Merek",
+    "brandsTitleBefore": "Spesialis untuk",
+    "brandsTitleHighlight": "Brother, FANUC & HOWA",
+    "brandsLead": "Keahlian mendalam di tiga merek CNC utama — dari mesin dan suku cadang hingga perawatan, perbaikan, dan dukungan teknis.",
+    "brandsListLabel": "Merek utama yang kami spesialisasikan",
+    "heroSlideLabel": "Slide hero {n} dari {total}",
+    "heroDotsLabel": "Slide hero",
     "whatWeDo": "Yang Kami Lakukan",
     "servicesTitle": "Mesin, Suku Cadang & Perawatan di Satu Tempat",
     "servicesLead": "Pilih yang Anda butuhkan di bawah. Setiap layanan memiliki detail sendiri dan cara langsung untuk menghubungi kami.",
@@ -52,22 +59,22 @@
       "machines": {
         "title": "Mesin CNC Bekas",
         "tag": "Mencari mesin?",
-        "text": "Mesin CNC bekas berkualitas, dengan fokus kuat pada pusat mesin Brother CNC.",
-        "points": ["Pusat mesin Brother", "Diperiksa & siap produksi", "Pencarian atas permintaan"],
+        "text": "Kami membeli dan menjual mesin CNC, serta merefurbish sebelum dijual ke pelanggan berikutnya.",
+        "points": ["Kami membeli mesin CNC bekas", "Kami menjual mesin CNC", "Direfurbish sebelum dijual"],
         "cta": "Lihat Mesin Tersedia"
       },
       "parts": {
         "title": "Suku Cadang CNC",
         "tag": "Butuh suku cadang?",
         "text": "Suku cadang CNC asli dan kompatibel yang dipasok dengan percaya diri.",
-        "points": ["Spindle, ball screw & linear guide", "Servo motor & drive", "Tool changer & control board"],
+        "points": ["Spindle, ball screw & linear guide", "Servo motor & drive", "Tool changer & control board", "Tukar tambah suku cadang diterima"],
         "cta": "Tanya Suku Cadang"
       },
       "repair": {
         "title": "Perawatan & Perbaikan",
         "tag": "Mesin berhenti?",
         "text": "Dukungan di lokasi untuk mengurangi downtime dan meningkatkan efisiensi.",
-        "points": ["Perawatan preventif", "Perbaikan & overhaul mesin", "Upgrade otomasi"],
+        "points": ["Perawatan preventif", "Perbaikan & overhaul mesin", "Upgrade otomasi", "Modifikasi mesin sesuai kebutuhan pelanggan"],
         "cta": "Lihat Perbaikan & Servis"
       }
     },
@@ -133,6 +140,10 @@
       "onestop": "Satu Pintu",
       "onestopLabel": "Solusi CNC"
     },
+    "galleryEyebrow": "Fasilitas Kami",
+    "galleryTitle": "Di Dalam Able Engineering",
+    "galleryLead": "Sekilas tentang bengkel, mesin, dan tim di balik pekerjaan kami.",
+    "galleryAlt": "Foto fasilitas Able Engineering {n}",
     "journey": "Perjalanan Kami",
     "regionTitle": "Memperluas Dukungan Regional Kami",
     "regionText": "Terus mendukung pelanggan di {regions}.",
@@ -293,7 +304,7 @@
       "Tool changer",
       "Control board",
       "Upgrade otomasi",
-      "Dukungan Brother CNC"
+      "Dukungan CNC"
     ],
     "techAlt": "Teknisi mengerjakan peralatan CNC",
     "offerEyebrow": "Yang Kami Tawarkan",
@@ -334,6 +345,7 @@
       "Dukungan praktis yang fokus pada lantai produksi",
       "Pasokan suku cadang bersamaan dengan perbaikan",
       "Pengalaman di berbagai komponen CNC utama",
+      "Dukungan buyback, tukar tambah & sourcing mesin CNC bekas",
       "Layanan regional di {regions}"
     ],
     "ctaTitle": "Mesin berhenti atau saatnya diservis?",

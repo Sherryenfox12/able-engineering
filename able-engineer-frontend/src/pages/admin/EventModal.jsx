@@ -10,7 +10,7 @@ import PhotoGrid from './PhotoGrid'
 import { usePhotos } from './usePhotos'
 
 /**
- * Add / edit an event. Title, summary and description are entered per language
+ * Add / edit an event. Title and description are entered per language
  * (English / 中文 / Indonesia); the website shows the visitor's language and falls back to English.
  * Photos (up to 5) are only uploaded when Save is pressed.
  */
@@ -98,11 +98,6 @@ function EventModal({ event, onClose, onSaved }) {
         <label className="admin-field">
           <span>Title</span>
           <input value={current.title} onChange={(e) => setField('title', e.target.value)} disabled={saving} autoFocus />
-        </label>
-
-        <label className="admin-field">
-          <span>Summary</span>
-          <textarea rows={2} value={current.summary} onChange={(e) => setField('summary', e.target.value)} disabled={saving} />
         </label>
 
         <label className="admin-field">

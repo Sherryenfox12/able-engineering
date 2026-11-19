@@ -233,6 +233,33 @@
   font-size: 0.88rem;
 }
 
+/* ---------------- Facility gallery ---------------- */
+.about-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.1rem;
+}
+
+.about-gallery__item {
+  overflow: hidden;
+  border: 1px solid #d3e3f4;
+  border-radius: var(--radius);
+  background: #eef4fd;
+  box-shadow: 0 10px 24px rgba(10, 31, 74, 0.08);
+  aspect-ratio: 4 / 3;
+}
+
+.about-gallery__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.about-gallery__item:hover img {
+  transform: scale(1.04);
+}
+
 /* ---------------- Regional support ---------------- */
 .region {
   padding: 3.2rem 0 5rem;
@@ -330,6 +357,10 @@
 
   .stats {
     grid-template-columns: 1fr;
+  }
+
+  .about-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .region__inner {

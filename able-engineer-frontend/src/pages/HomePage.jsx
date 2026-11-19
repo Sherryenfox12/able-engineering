@@ -60,10 +60,21 @@ const SERVICE_KEYS = [
 const BRAND_LOGOS = [
   { src: '/product-branding-list/brother.jpg', alt: 'Brother' },
   { src: '/product-branding-list/Fanuc.png', alt: 'FANUC' },
+  { src: '/product-branding-list/Howa.png', alt: 'HOWA' },
   { src: '/product-branding-list/mitsubishi.png', alt: 'Mitsubishi Electric' },
+  { src: '/product-branding-list/Nichicon.png', alt: 'Nichicon' },
   { src: '/product-branding-list/SMC.png', alt: 'SMC' },
+  { src: '/product-branding-list/Tamagawa.png', alt: 'Tamagawa' },
   { src: '/product-branding-list/tosoku.png', alt: 'Tosoku' },
 ]
+
+const HERO_BRANDS = [
+  { name: 'BROTHER', src: '/product-branding-list/brother.jpg' },
+  { name: 'FANUC', src: '/product-branding-list/Fanuc.png' },
+  { name: 'HOWA', src: '/product-branding-list/Howa.png' },
+]
+
+const HERO_AUTO_MS = 7000
 
 function HomePage() {
   const { t, lang } = useLanguage()
@@ -72,6 +83,8 @@ function HomePage() {
   const [latestEvent, setLatestEvent] = useState(null)
   const [openProduct, setOpenProduct] = useState(null)
   const [openEvent, setOpenEvent] = useState(null)
+  const [heroSlide, setHeroSlide] = useState(0)
+  const [heroPaused, setHeroPaused] = useState(false)
 
   useEffect(() => {
     let cancelled = false
@@ -98,6 +111,14 @@ function HomePage() {
   const closeProduct = useCallback(() => setOpenProduct(null), [])
   const closeEvent = useCallback(() => setOpenEvent(null), [])
 
+  useEffect(() => {
+    if (heroPaused) return undefined
+    const id = window.setInterval(() => {
+      setHeroSlide((prev) => (prev + 1) % 2)
+    }, HERO_AUTO_MS)
+    return () => window.clearInterval(id)
+  }, [heroPaused])
+
   const services = SERVICE_KEYS.map(({ icon, key, image, to }) => ({
     icon,
     image,
@@ -116,13 +137,32 @@ function HomePage() {
   ]
 
   const eventTitle = latestEvent ? pickText(latestEvent.title, lang) : ''
-  const eventSummary = latestEvent ? pickText(latestEvent.summary, lang) : ''
+  const eventDescription = latestEvent ? pickText(latestEvent.description, lang) : ''
 
   return (
     <>
       {/* ---------------- Hero ---------------- */}
-      <section className="hero" aria-labelledby="hero-title">
-        <div className="hero__bg" style={{ backgroundImage: `url(${IMAGES.heroBackground})` }} />
+      <section
+        className="hero"
+        aria-roledescription="carousel"
+        aria-label={t('home.heroDotsLabel')}
+        onMouseEnter={() => setHeroPaused(true)}
+        onMouseLeave={() => setHeroPaused(false)}
+        onFocusCapture={() => setHeroPaused(true)}
+        onBlurCapture={(e) => {
+          if (!e.currentTarget.contains(e.relatedTarget)) setHeroPaused(false)
+        }}
+      >
+        <div
+          className={`hero__bg${heroSlide === 0 ? ' is-active' : ''}`}
+          style={{ backgroundImage: `url(${IMAGES.heroBackground})` }}
+          aria-hidden={heroSlide !== 0}
+        />
+        <div
+          className={`hero__bg${heroSlide === 1 ? ' is-active' : ''}`}
+          style={{ backgroundImage: `url(${IMAGES.heroBrandsBackground})` }}
+          aria-hidden={heroSlide !== 1}
+        />
         <div className="hero__overlay" />
         <div className="hero__grid-lines" />
 
@@ -142,38 +182,94 @@ function HomePage() {
         </div>
 
         <div className="container hero__inner">
-          <div className="hero__content">
-            <span className="hero__eyebrow">{t('home.eyebrow')}</span>
-            <h1 id="hero-title">
-              {t('home.titleBefore')} <span>{t('home.titleHighlight')}</span> {t('home.titleAfter')}
-            </h1>
-            <p>{t('home.lead', { years: COMPANY.yearsExperience })}</p>
-            <div className="hero__actions">
-              <a href="#what-we-do" className="btn btn--primary">
-                {t('home.ctaExplore')} <ArrowRightIcon size={18} />
-              </a>
-              <Link to="/about" className="btn btn--ghost">
-                {t('home.ctaAbout')}
-              </Link>
+          <div
+            className={`hero__slide${heroSlide === 0 ? ' is-active' : ''}`}
+            role="group"
+            aria-roledescription="slide"
+            aria-label={t('home.heroSlideLabel', { n: 1, total: 2 })}
+            aria-hidden={heroSlide !== 0}
+          >
+            <div className="hero__content">
+              <span className="hero__eyebrow">{t('home.eyebrow')}</span>
+              <h1 id="hero-title">
+                {t('home.titleBefore')} <span>{t('home.titleHighlight')}</span> {t('home.titleAfter')}
+              </h1>
+              <p>{t('home.lead', { years: COMPANY.yearsExperience })}</p>
+              <div className="hero__actions">
+                <a href="#what-we-do" className="btn btn--primary" tabIndex={heroSlide === 0 ? 0 : -1}>
+                  {t('home.ctaExplore')} <ArrowRightIcon size={18} />
+                </a>
+                <Link to="/about" className="btn btn--ghost" tabIndex={heroSlide === 0 ? 0 : -1}>
+                  {t('home.ctaAbout')}
+                </Link>
+              </div>
+            </div>
+
+            <div className="hero__visual" aria-hidden="true">
+              <div className="hero__gear hero__gear--lg">
+                <GearIcon size={220} strokeWidth={0.6} />
+              </div>
+              <div className="hero__gear hero__gear--sm">
+                <GearIcon size={110} strokeWidth={0.8} />
+              </div>
+              <div className="hero__badge">
+                <strong>{COMPANY.yearsExperience}</strong>
+                <span>
+                  {t('home.badgeYears')}
+                  <br />
+                  {t('home.badgeIndustry')}
+                </span>
+              </div>
             </div>
           </div>
 
-          <div className="hero__visual" aria-hidden="true">
-            <div className="hero__gear hero__gear--lg">
-              <GearIcon size={220} strokeWidth={0.6} />
-            </div>
-            <div className="hero__gear hero__gear--sm">
-              <GearIcon size={110} strokeWidth={0.8} />
-            </div>
-            <div className="hero__badge">
-              <strong>{COMPANY.yearsExperience}</strong>
-              <span>
-                {t('home.badgeYears')}
-                <br />
-                {t('home.badgeIndustry')}
-              </span>
+          <div
+            className={`hero__slide hero__slide--brands${heroSlide === 1 ? ' is-active' : ''}`}
+            role="group"
+            aria-roledescription="slide"
+            aria-label={t('home.heroSlideLabel', { n: 2, total: 2 })}
+            aria-hidden={heroSlide !== 1}
+          >
+            <div className="hero__content">
+              <span className="hero__eyebrow">{t('home.brandsEyebrow')}</span>
+              <h2 className="hero__title">
+                {t('home.brandsTitleBefore')} <span>{t('home.brandsTitleHighlight')}</span>
+              </h2>
+              <p>{t('home.brandsLead')}</p>
+              <ul className="hero__brands" aria-label={t('home.brandsListLabel')}>
+                {HERO_BRANDS.map((brand) => (
+                  <li key={brand.name} className="hero__brand">
+                    {brand.src ? (
+                      <img src={brand.src} alt={brand.name} loading="lazy" decoding="async" />
+                    ) : null}
+                    <strong>{brand.name}</strong>
+                  </li>
+                ))}
+              </ul>
+              <div className="hero__actions">
+                <a href="#what-we-do" className="btn btn--primary" tabIndex={heroSlide === 1 ? 0 : -1}>
+                  {t('home.ctaExplore')} <ArrowRightIcon size={18} />
+                </a>
+                <Link to="/contact" className="btn btn--ghost" tabIndex={heroSlide === 1 ? 0 : -1}>
+                  {t('home.ctaButton')}
+                </Link>
+              </div>
             </div>
           </div>
+        </div>
+
+        <div className="hero__dots" role="tablist" aria-label={t('home.heroDotsLabel')}>
+          {[0, 1].map((index) => (
+            <button
+              key={index}
+              type="button"
+              role="tab"
+              className={`hero__dot${heroSlide === index ? ' is-active' : ''}`}
+              aria-selected={heroSlide === index}
+              aria-label={t('home.heroSlideLabel', { n: index + 1, total: 2 })}
+              onClick={() => setHeroSlide(index)}
+            />
+          ))}
         </div>
 
         <svg className="hero__wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
@@ -333,7 +429,7 @@ function HomePage() {
                 </div>
                 <div className="home-event__body">
                   <h3>{eventTitle}</h3>
-                  {eventSummary ? <p>{eventSummary}</p> : null}
+                  {eventDescription ? <p>{eventDescription}</p> : null}
                   <span className="btn btn--outline btn--sm home-event__cta">
                     {t('products.viewDetails')} <ArrowRightIcon size={16} />
                   </span>
@@ -392,7 +488,6 @@ function HomePage() {
       {openEvent ? (
         <DetailDialog
           title={pickText(openEvent.title, lang)}
-          summary={pickText(openEvent.summary, lang)}
           description={pickText(openEvent.description, lang)}
           images={openEvent.images}
           onClose={closeEvent}

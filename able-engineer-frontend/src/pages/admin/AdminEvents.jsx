@@ -71,7 +71,7 @@ function AdminEvents() {
         ) : (
           <ul className="product-list">
             {events.map((event) => {
-              const summary = event.summary?.en || event.summary?.zh || event.summary?.id || ''
+              const description = event.description?.en || event.description?.zh || event.description?.id || ''
               const languages = ['en', 'zh', 'id'].filter((code) => event.title?.[code]?.trim())
 
               return (
@@ -92,7 +92,7 @@ function AdminEvents() {
                           </span>
                         ))}
                       </span>
-                      {summary ? <p>{summary}</p> : null}
+                      {description ? <p>{description}</p> : null}
                     </div>
                   </button>
                   <div className="product-item__actions">

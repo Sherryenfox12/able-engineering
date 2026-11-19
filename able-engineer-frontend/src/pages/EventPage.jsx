@@ -15,7 +15,7 @@ const SKELETON_COUNT = 6
 function EventCard({ event, index, lang, onOpen }) {
   const { t } = useLanguage()
   const title = pickText(event.title, lang)
-  const summary = pickText(event.summary, lang)
+  const description = pickText(event.description, lang)
   const cover = event.images[0] // The list only shows the first photo; the rest load in the details view.
 
   return (
@@ -32,7 +32,7 @@ function EventCard({ event, index, lang, onOpen }) {
 
       <div className="event-card__body">
         <h3>{title}</h3>
-        {summary ? <p className="event-card__summary">{summary}</p> : null}
+        {description ? <p className="event-card__summary">{description}</p> : null}
 
         <button
           type="button"
@@ -213,7 +213,6 @@ function EventPage() {
       {openEvent ? (
         <DetailDialog
           title={pickText(openEvent.title, lang)}
-          summary={pickText(openEvent.summary, lang)}
           description={pickText(openEvent.description, lang)}
           images={openEvent.images}
           onClose={closeDetail}

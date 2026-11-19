@@ -15,7 +15,13 @@
   inset: 0;
   background-size: cover;
   background-position: center;
+  opacity: 0;
+  transition: opacity 0.8s ease;
   animation: kenburns 24s ease-in-out infinite alternate;
+}
+
+.hero__bg.is-active {
+  opacity: 1;
 }
 
 .hero__overlay {
@@ -52,20 +58,45 @@
   position: relative;
   z-index: 2;
   display: grid;
+  align-items: center;
+  min-height: 420px;
+}
+
+.hero__slide {
+  grid-area: 1 / 1;
+  display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   align-items: center;
   gap: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(14px);
+  transition: opacity 0.55s ease, transform 0.55s ease, visibility 0.55s ease;
 }
 
-.hero__content > * {
+.hero__slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.hero__slide--brands {
+  grid-template-columns: 1fr;
+  max-width: 920px;
+}
+
+.hero__slide.is-active .hero__content > * {
   opacity: 0;
   animation: fade-up 0.8s ease forwards;
 }
 
-.hero__content > :nth-child(1) { animation-delay: 0.1s; }
-.hero__content > :nth-child(2) { animation-delay: 0.3s; }
-.hero__content > :nth-child(3) { animation-delay: 0.5s; }
-.hero__content > :nth-child(4) { animation-delay: 0.7s; }
+.hero__slide.is-active .hero__content > :nth-child(1) { animation-delay: 0.1s; }
+.hero__slide.is-active .hero__content > :nth-child(2) { animation-delay: 0.25s; }
+.hero__slide.is-active .hero__content > :nth-child(3) { animation-delay: 0.4s; }
+.hero__slide.is-active .hero__content > :nth-child(4) { animation-delay: 0.55s; }
+.hero__slide.is-active .hero__content > :nth-child(5) { animation-delay: 0.7s; }
 
 .hero__eyebrow {
   display: inline-block;
@@ -81,14 +112,16 @@
   background: rgba(21, 101, 216, 0.25);
 }
 
-.hero h1 {
+.hero h1,
+.hero__title {
   font-size: clamp(2.2rem, 5vw, 3.8rem);
   font-weight: 800;
   letter-spacing: -0.02em;
   color: #fff;
 }
 
-.hero h1 span {
+.hero h1 span,
+.hero__title span {
   display: block;
   background: linear-gradient(90deg, #7cc0ff, #3fa2ff, #ffffff, #3fa2ff);
   background-size: 250% 100%;
@@ -105,11 +138,80 @@
   color: #cddcf5;
 }
 
+.hero__brands {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin: 1.6rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hero__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 150px;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius);
+  background: rgba(10, 31, 74, 0.55);
+  backdrop-filter: blur(8px);
+}
+
+.hero__brand img {
+  width: 42px;
+  height: 28px;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+
+.hero__brand strong {
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #fff;
+}
+
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   margin-top: 2.2rem;
+}
+
+.hero__dots {
+  position: absolute;
+  left: 50%;
+  bottom: 7.2rem;
+  z-index: 4;
+  display: flex;
+  gap: 0.55rem;
+  transform: translateX(-50%);
+}
+
+.hero__dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease, width 0.25s ease;
+}
+
+.hero__dot:hover,
+.hero__dot:focus-visible {
+  background: rgba(255, 255, 255, 0.7);
+  outline: none;
+}
+
+.hero__dot.is-active {
+  width: 28px;
+  background: #fff;
 }
 
 /* Right-hand decorative visual */
@@ -532,7 +634,11 @@
 }
 
 .home-event__media {
+  position: relative;
   min-height: 280px;
+  max-height: 420px;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
   background: linear-gradient(145deg, #eef4fd, #dfeafb);
 }
 
@@ -674,12 +780,16 @@
 
 /* ---------------- Responsive ---------------- */
 @media (max-width: 960px) {
-  .hero__inner {
+  .hero__slide {
     grid-template-columns: 1fr;
   }
 
   .hero__visual {
     display: none;
+  }
+
+  .hero__dots {
+    bottom: 6.2rem;
   }
 
   .services {
@@ -742,7 +852,8 @@
 
   .home-event__media,
   .home-event__placeholder {
-    min-height: 220px;
+    min-height: 240px;
+    max-height: 340px;
   }
 
   .home-event__body {
@@ -768,5 +879,22 @@
   .hero {
     min-height: auto;
     padding: 4rem 0 6rem;
+  }
+
+  .hero__inner {
+    min-height: 0;
+  }
+
+  .hero__brands {
+    gap: 0.7rem;
+  }
+
+  .hero__brand {
+    min-width: calc(50% - 0.35rem);
+    flex: 1 1 calc(50% - 0.35rem);
+  }
+
+  .hero__dots {
+    bottom: 5.4rem;
   }
 }

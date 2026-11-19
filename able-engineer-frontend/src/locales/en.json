@@ -45,6 +45,13 @@
     "ctaAbout": "About Us",
     "badgeYears": "Years of",
     "badgeIndustry": "Industry Experience",
+    "brandsEyebrow": "Brand Specialists",
+    "brandsTitleBefore": "Specialists in",
+    "brandsTitleHighlight": "Brother, FANUC & HOWA",
+    "brandsLead": "Deep expertise across three major CNC brands — from machines and spare parts to maintenance, repair and technical support.",
+    "brandsListLabel": "Major brands we specialise in",
+    "heroSlideLabel": "Hero slide {n} of {total}",
+    "heroDotsLabel": "Hero slides",
     "whatWeDo": "What We Do",
     "servicesTitle": "Machines, Parts & Maintenance in One Place",
     "servicesLead": "Choose what you need below. Each service has its own details and a direct way to get in touch.",
@@ -52,22 +59,22 @@
       "machines": {
         "title": "Used CNC Machines",
         "tag": "Looking for a machine?",
-        "text": "Quality pre-owned CNC machines, with a strong focus on Brother CNC machining centres.",
-        "points": ["Brother machining centres", "Inspected & ready for production", "Sourcing on request"],
+        "text": "We buy and sell CNC machines, and refurbish them before they go to the next customer.",
+        "points": ["We buy used CNC machines", "We sell CNC machines", "Refurbished before selling"],
         "cta": "View Available Machines"
       },
       "parts": {
         "title": "CNC Spare Parts",
         "tag": "Need a part?",
         "text": "Genuine and compatible CNC parts supplied with confidence.",
-        "points": ["Spindles, ball screws & linear guides", "Servo motors & drives", "Tool changers & control boards"],
+        "points": ["Spindles, ball screws & linear guides", "Servo motors & drives", "Tool changers & control boards", "Trade-in spare parts accepted"],
         "cta": "Enquire About Parts"
       },
       "repair": {
         "title": "Maintenance & Repair",
         "tag": "Machine down?",
         "text": "On-site support to reduce downtime and improve efficiency.",
-        "points": ["Preventive maintenance", "Repair & machine overhaul", "Automation upgrades"],
+        "points": ["Preventive maintenance", "Repair & machine overhaul", "Automation upgrades", "Machine modification for your needs"],
         "cta": "View Repair & Service"
       }
     },
@@ -133,6 +140,10 @@
       "onestop": "One-Stop",
       "onestopLabel": "CNC Solutions"
     },
+    "galleryEyebrow": "Our Facility",
+    "galleryTitle": "Inside Able Engineering",
+    "galleryLead": "A look at our workshop, machines and the team behind the work.",
+    "galleryAlt": "Able Engineering facility photo {n}",
     "journey": "Our Journey",
     "regionTitle": "Expanding Our Regional Support",
     "regionText": "Continuing to support customers across {regions}.",
@@ -293,7 +304,7 @@
       "Tool changers",
       "Control boards",
       "Automation upgrades",
-      "Brother CNC support"
+      "CNC support"
     ],
     "techAlt": "Technician working on CNC equipment",
     "offerEyebrow": "What We Offer",
@@ -334,6 +345,7 @@
       "Practical, shop-floor focused support",
       "Spare parts supply alongside repair work",
       "Experience across major CNC components",
+      "Used CNC machine buyback, trade-in & sourcing support",
       "Regional service across {regions}"
     ],
     "ctaTitle": "Machine down or due for service?",
